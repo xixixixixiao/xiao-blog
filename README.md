@@ -1,2 +1,6 @@
-# myblog
-👏 welcome to XIXIXIXIXIAO's blog
+# XIAO blog
+
+## Translation (译文)
+
+
+## BLOG
