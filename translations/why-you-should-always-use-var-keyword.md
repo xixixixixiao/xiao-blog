@@ -2,12 +2,13 @@
 
 > Using the ‘var’ keyword in C# has always spurred a hot debate among developers. I believe ‘var’ should be used at all times. I believe this not because I choose to be “lazy,” as those who argue against it frequently claim. Of all the reasons I use ‘var’, laziness is not one of them.
 
-在 C# 中使用 `var` 关键字一直引起开发人员的激烈争论, 我认为应始终使用 `var`. 我相信这不是因为我选择变得 *懒惰*, 正如经常声称反对它的人的那样, 在我使用 `var` 的所有原因中, 懒惰不是其中之一.
-
+在 C# 中使用 `var` 关键字一直引起开发人员的激烈争论, 我认为应始终使用 `var`. 我相信这不是因为我选择变得 **懒惰**, 正如经常声称反对它的人的那样, 在我使用 `var` 的所有原因中, 懒惰不是其中之一.
 
 > I’ve argued for the constant use of ‘var’ countless times; this blog post is a collection of thoughts that I have compiled resulting from my arguments. Below are my reasons for using ‘var’ all of the time.
 
 我主张无时无刻地使用 `var`, 这篇博客文章是我根据自己的论点整理出的想法的集合, 以下是我一直使用 `var` 的原因.
+
+[原文](http://blog.michaelbrennan.net/2010/06/why-you-should-always-use-var-keyword.html)
 
 ## It decreases code-coupling (减少代码耦合)
 
@@ -19,11 +20,11 @@
 
 > Imagine there are 20 explicit type references spanning over twenty code files to an object that returned an another object of type IFoo. By explicit type references, I mean by prefacing each variable name with IFoo. What happens if IFoo changes to IBar, but the interface’s methods are kept the same?
 
-假设有 20 个显式类型引用, 跨越 20 多个代码文件, 返回一个类型为 IFoo 的对象. 通过显式类型引用, 我的意思是在每个变量名前面加上 IFoo, 如果将 IFoo 更改为 IBar, 接口的方法保持不变, 会发生什么?
+假设有 20 个显式类型引用, 跨越 20 多个代码文件, 返回一个类型为 `IFoo` 的对象. 通过显式类型引用, 我的意思是在每个变量名前面加上 `IFoo`, 如果将 `IFoo` 更改为 `IBar`, 接口的方法保持不变, 会发生什么?
 
 > Wouldn’t you have to change it in 20 distinct places? Doesn’t this increase coupling? If ‘var’ was used, would you have to change anything? Now, one could argue that it is trivial to change IFoo to IBar in a tool like ReSharper and have all of the references changed automatically. However, what if IFoo is outside of our control? It could live outside the solution or it could be a third-party library.
 
-是否需要在 20 个不同的地方就行修改? 这不就是增加了耦合? 若使用 "var", 需要修改什么吗? 现在, 有人可能会争辩道, 在 ReSharper 之类的工具中将 IFoo 修改为 IBar 并不重要, 且可以自动更正所有引用. 但是, 倘若 IFoo 超出我们的控制范围了? 它可以存在与解决方案之外, 也可以是第三方库.
+是否需要在 20 个不同的地方就行修改? 这不就是增加了耦合? 若使用 `var`, 需要修改什么吗? 现在, 有人可能会争辩道, 在 ReSharper 之类的工具中将 `IFoo` 修改为 `IBar` 并不重要, 且可以自动更正所有引用. 但是, 倘若 `IFoo` 超出我们的控制范围了? 它可以存在与解决方案之外, 也可以是第三方库.
 
 ## It is completely redundant with any expression involving the "new" operator (它对于任何涉及 "new" 运算符的表达式都是完全多余的)
 
@@ -71,7 +72,7 @@ var calculator = new GBPCalculator<GBPCurrency, GBPTaxType>();
 
 > In the previous example, the word "calculator" was repeated three times. In that example, you only need to know that the instance of a type (the object) is a calculator, and it allows you to call a particular method or property.
 
-如前例所示, 单词 "`calculator`" 重复了三次, 示例中, 只需要知道类型 (对象) 的实例是一个 `calculator` (计算器), 并且它允许调用特定的方法或者属性.
+如前例所示, 单词 `calculator` 重复了三次, 示例中, 只需要知道类型 (对象) 的实例是一个 `calculator` (计算器), 并且它允许调用特定的方法或者属性.
 
 > The only reason a calculator object was created was so that other code could interact with its object contract. Other code needs the calculator’s methods and properties to get something done. This need has no dependency on any type, only on an object’s behaviors..
 
@@ -79,7 +80,7 @@ var calculator = new GBPCalculator<GBPCurrency, GBPTaxType>();
 
 > For example, as long as the object is a calculator, and the dependent code needs to call a method named ,” then the dependent code is coupled to an object with a method called “CalculateTax” and not a specific type. This allows for much more flexibility, because now the variable can reference any type as long as that type supports the “CalculateTax” method.
 
-比如, 依赖代码需要调用一个名为 "`CalculateTax`" 的方法, 对象只要是个 `calculator` (计算器), 那么依赖代码就会与一个名为 "`CalculateTax`" 的方法 (而不是特定类型) 耦合到一个对象上, 这允许更大的灵活性, 因为现在变量可以引用任何类型, 只要该类型支持 "`CalculateTax`" 方法.
+比如, 依赖代码需要调用一个名为 "`CalculateTax`" 的方法, 对象只要是个 `calculator` (计算器), 那么依赖代码就会与一个名为 `CalculateTax` 的方法 (而不是特定类型) 耦合到一个对象上, 这允许更大的灵活性, 因为现在变量可以引用任何类型, 只要该类型支持 `CalculateTax` 方法.
 
 ## ‘var’ is less noisy than explicitly referencing the type (与显式引用类型相比, “var”的噪声更小)
 
@@ -101,11 +102,11 @@ var calculator = new GBPCalculator<GBPCurrency, GBPTaxType>();
 
 > The inclusion of ‘var’ into the C# language was done for a reason and bookmarks another iteration of C# (particularly C# 3.0). It allows us to spend less time telling the compiler what to do and more time thinking about the problem we are trying to solve.
 
-将 "var" 包含在 C# 语言中是有原因的, 标志着 C# 的一种革新 (尤其是 C# 3.0). 它让我们可以花更少的时间告诉编译器应该做什么, 花更多的时间思考我们需要解决的问题.
+将 "var" 包含在 C# 语言中是有原因的, 标志着 C# 的一次革新 (尤其是 C# 3.0). 它让我们可以花更少的时间告诉编译器应该做什么, 花更多的时间思考我们需要解决的问题.
 
 > Often I hear dogma like "use var only when using anonymous types." Why then should you use an anonymous type? Under these conditions you usually do not have a choice, such as when assigning variables to the results of LINQ expressions. Why do you not have a choice when using LINQ expressions? It's because the expression is accomplishing something more functional and typing concerns are the least of your worries.
 
-经常听到这样的教条: "只能在使用匿名类型时才能 var." 那么为什么要使用匿名类型呢? 在这些情况下, 通常没有选择的余地, 比如在将变量分配给 LINQ 表达式的结果时. 为什么在使用 LINQ 表达式时没得选? 这正是因为表达式实现了一些更为实用的功能, 且类型问题是最不需要担心的.
+经常听到这样的教条: "只能在使用匿名类型时才能 `var`." 那么为什么要使用匿名类型呢? 在这些情况下, 通常没有选择的余地, 比如在将变量分配给 LINQ 表达式的结果时. 为什么在使用 LINQ 表达式时没得选? 这正是因为表达式实现了一些更为实用的功能, 且类型问题是最不需要担心的.
 
 > In the ideal C# world, we would not have to put any words in front of a variable name at all. In fact, prefacing a variable with anything just confuses the developer even further, and allows for poor variable names to become a standard whereby everyone is reliant upon explicit type references.
 
@@ -115,7 +116,7 @@ var calculator = new GBPCalculator<GBPCurrency, GBPTaxType>();
 
 > Some of the arguments I have heard against using ‘var’ and my responses to these are:
 
-我看到一些反对使用 "var" 的论点, 对此我的回答是：
+我看到一些反对使用 `var` 的论点, 对此我的回答是：
 
 > - “It reduces clarity” – How? By removing the noise in front of a variable name, your brain has only one thing to focus on: the variable name. It increases clarity.
 
@@ -127,7 +128,7 @@ var calculator = new GBPCalculator<GBPCurrency, GBPTaxType>();
 
 > - “It litters the codebase” – This is usually an argument for consistency. If your codebase uses explicit type references everywhere, then by all means do not use ‘var’. Consistency is far more important. Either change all explicit references in the codebase to ‘var’ or do not use ‘var’ at all. This is a more general argument that applies to many more issues, such as naming conventions, physical organization policies, etc.
 
-"它让代码库变得乱糟糟" - 这大概是一致性的理由. 如果现存的代码库已经使用显示类型引用, 那么别使用 "var", 一致性更重要. 要么将代码库中所有显示引用修改为 "var", 要么从不使用 "var". 这是个更普遍的观点, 适用于很多情形, 比如命名约定, 物理文件组织策略等等.
+"它让代码库变得乱糟糟" - 这大概是一致性的理由. 如果现存的代码库已经使用显示类型引用, 那么别使用 `var`, 一致性更重要. 要么将代码库中所有显示引用修改为 `var`, 要么从不使用 `var`. 这是个更普遍的观点, 适用于很多情形, 比如命名约定, 物理文件组织策略等等.
 
 > As a final thought, why do we preface interface names with “I” but not class names with “C” as we did in the days when Microsoft-C++ was the popular kid in school?
 
