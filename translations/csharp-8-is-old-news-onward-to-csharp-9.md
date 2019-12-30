@@ -10,7 +10,7 @@
 
 > And, since this is Christmas Day, let’s peek in on five (there are a LOT more!) C# 9 language “gifts” we might receive sometime in 2020 (subject to change, of course!)
 
-并且, 由于今天是圣诞节(作者是2019年12月25日写的这篇文章), 所有让我们悄悄咪咪地看下五个 (还有**更多**!) 关于C# 9 的 **"礼物"**, 我们很有可能在2020年的某天收到(当然, 可能也不会!).
+并且, 由于今天是圣诞节(作者是2019年12月25日写的这篇文章), 所以让我们悄悄咪咪地看下五个 (还有**更多**!) 关于C# 9 的 **"礼物"**, 我们很有可能在2020年的某天收到(当然, 可能也不会!).
 
 ## 1. [Simplified Parameter NULL Validation Code (简化 NULL 参数验证代码)](https://github.com/dotnet/csharplang/issues/2145)
 
