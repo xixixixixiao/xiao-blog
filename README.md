@@ -2,10 +2,12 @@
 
 ## Translation (译文)
 
-- [为什么你总是应该在 C# 里使用 "var" 关键字(Why You Should Always Use the ‘var’ Keyword in C#)](./translations/why-you-should-always-use-var-keyword.md) Monday, December 30, 2019
+- 2019-12-30 [为什么你总是应该在 C# 里使用 "var" 关键字](./translations/why-you-should-always-use-var-keyword.md)
 
-- [Is Entity the same as Value Object](./translations/is-entity-same-as-value-object.md) (未翻译)
+- 2019-12-30 [Is Entity the same as Value Object](./translations/is-entity-same-as-value-object.md) (未翻译)
 
-- [C# 8 已成旧闻, 向前, 抵达 C# 9! (C# 8 is old news. Onward, to C# 9! )](./translations/csharp-8-is-old-news-onward-to-csharp-9.md) (2019年12月30日)
+- 2019-12-30 [C# 8 已成旧闻, 向前, 抵达 C# 9!](./translations/csharp-8-is-old-news-onward-to-csharp-9.md)
 
 ## BLOG
+
+- 2019-12-31 [实现 WebApi 自托管服务宿主于 WinForms 及其交互](./blogs/run-self-hosting-owin-web-api-inside-winforms.md)
