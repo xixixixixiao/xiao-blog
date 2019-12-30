@@ -11,7 +11,7 @@ namespace WindowsFormsApp.Services
         /// <summary>
         /// HTTP self hosting.
         /// </summary>
-        protected HttpSelfHostServer HostServer { get; set; }
+        private HttpSelfHostServer _server;
 
         #region HTTP Service
 
@@ -26,8 +26,8 @@ namespace WindowsFormsApp.Services
             config.MapHttpAttributeRoutes();
             config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}");
 
-            this.HostServer = new HttpSelfHostServer(config);
-            this.HostServer.OpenAsync().Wait();
+            this._server = new HttpSelfHostServer(config);
+            this._server.OpenAsync().Wait();
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace WindowsFormsApp.Services
         /// </summary>
         public void CloseHttpServer()
         {
-            this.HostServer.CloseAsync().Wait();
-            this.HostServer.Dispose();
+            this._server.CloseAsync().Wait();
+            this._server.Dispose();
         }
 
         #endregion
