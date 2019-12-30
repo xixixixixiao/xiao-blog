@@ -1,4 +1,4 @@
-# C# 8 is old news. Onward, to C# 9! (C# 已成旧闻, 向前, 抵达 C# 9!)
+# C# 8 is old news. Onward, to C# 9! (C# 8 已成旧闻, 向前, 抵达 C# 9!)
 
 > [Did you know that planning is already underway for the ninth version of the C# language?](https://github.com/dotnet/csharplang/milestone/15)
 
@@ -102,7 +102,7 @@ class Person(string firstName)
 
 ## 4. [Record (记录)](https://github.com/dotnet/csharplang/issues/39)
 
-Slightly similar in nature to Primary Constructions (mentioned above), the goal of this proposal is to remove the necessity of writing so much boilerplate code when creating a new class / struct. It seems possible that if Record types make it in, that Primary Constructors will not (opinion). For example:
+> Slightly similar in nature to Primary Constructions (mentioned above), the goal of this proposal is to remove the necessity of writing so much boilerplate code when creating a new class / struct. It seems possible that if Record types make it in, that Primary Constructors will not (opinion). For example:
 
 与上面提到的基本结构在本质上稍微相似, 该建议的目的是在创造新类/结构体时, 消除编写大量必要的样板代码. 如果 `记录` 类型出现, 那么 `主构造函数` 就不再有了(意见). 例如:
 

@@ -6,6 +6,6 @@
 
 - [Is Entity the same as Value Object](./translations/is-entity-same-as-value-object.md) (未翻译)
 
-- [C# 已成旧闻, 向前, 抵达 C# 9! (C# 8 is old news. Onward, to C# 9! )](./translations/csharp-8-is-old-news-onward-to-csharp-9.md) (2019年12月30日)
+- [C# 8 已成旧闻, 向前, 抵达 C# 9! (C# 8 is old news. Onward, to C# 9! )](./translations/csharp-8-is-old-news-onward-to-csharp-9.md) (2019年12月30日)
 
 ## BLOG
