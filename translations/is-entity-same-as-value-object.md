@@ -205,7 +205,7 @@ public class Customer : Entity
 
 > - In terms of **history preservation**, the answer is **no**.
 
-- 就历史保护而言, 答案是**不能**.
+- 就历史维持而言, 答案是**不能**.
 
 > Thus, the overall answer is also **no**.
 

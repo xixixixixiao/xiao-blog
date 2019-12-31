@@ -4,7 +4,7 @@
 
 - 2019-12-30 [为什么你总是应该在 C# 里使用 "var" 关键字](./translations/why-you-should-always-use-var-keyword.md)
 
-- 2019-12-30 [实体与值对象到底是不是一回事?](./translations/is-entity-same-as-value-object.md) (校对中)
+- 2019-12-31 [实体与值对象到底是不是一回事?](./translations/is-entity-same-as-value-object.md)
 
 - 2019-12-30 [C# 8 已成旧闻, 向前, 抵达 C# 9!](./translations/csharp-8-is-old-news-onward-to-csharp-9.md)
 
