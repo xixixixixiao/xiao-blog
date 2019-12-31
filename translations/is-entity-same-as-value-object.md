@@ -133,37 +133,74 @@ public class Customer : Entity
 
 > You definitely can, I don’t see any reason why not. So, from the identity comparison perspective, the answer to the question "*Can you treat Entity and Value Object as the same concept?*" is **yes**.
 
-## Immutability
+你当然可以这么做, 我觉得完全可以. 所以从标识比较的视角, "*是否可以将实体和值对象视为相同的概念?*" 的答案是 "**YES**".
+
+## 不可变性 (Immutability)
 
 > In terms of immutability, the difference between entities and value object is that value objects are immutable, whereas entities are almost always mutable. You don’t modify a value object; instead, you create a new one and replace the old instance with it.
 
+在不可变性上, 实体与值对象的区别在于值对象是不可变的, 而实体几乎总是可变的. 不需要修改值对象; 而是创建一个值对象的新实例去替换旧实例.
+
 > One could argue that immutability isn’t a defining property of a value object either. You could even apply the same line of reasoning as with **identity comparison** and say that what matters is immutability of the fields that form the value object’s identity, and that all other fields can be left mutable. In the example with the `Error` class, that would mean being able to change the `Message` field, but not `Code`.
+
+有人可能会说, 不可变性也不是值对象的属性定义. 你甚至可以应用同样的推理作为 **标识比较**, 并说重要的是构成值对象的标识字段的不可变性, 而其它所有的字段可以保持可变的. 在 `Error` 类的示例中, 意味着可以修改 `Message` 字段, 但是不能修改 `Code` 字段.
 
 > And it’s true that fields that form the object’s identity must not change. This requirement works similarly for entities and value objects:
 
+的确, 构成对象的标识字段不能变更, 这一要求同样适用于实体和值对象:
+
 > - The modification of an entity’s Id field would turn that entity into a different one. Thus, such a modification is prohibited.
+
+- 修改实体的 Id 字段会将该实体变成另外一个实体. 因此, 禁止这种修改.
+
 > - Similarly, the modification of fields that form a value object’s identity would, too, turn that value object into a different one.
+
+- 同样地, 对构成值对象的标识字段修改也会将该值对象转变成另外一个不同的值对象.
 
 > But what about the remaining fields? If we can change an entity’s properties (except for the Id one), can’t we also change the fields of a value object, as long as they aren’t part of its identity?
 
+但是剩余其它的字段呢? 如果我们能改变一个实体 Id 除外的属性, 那么只要不要修改它们非标识的一部分, 就不能更改值对象的字段吗?
+
 > On the surface, it looks like we can, but this line of reasoning falls apart when you take into account the 3rd component that differentiates entities from value objects: history preservation.
 
-## History preservation
+从表面上看, 我们可以做到, 但是当考虑将与实体与值对象区分开的第三部分: 历史保存时, 这种推理就经不起推敲了.
+
+## 历史保存 (History preservation)
 
 > **History preservation** is whether or not an object has a history in your domain model.
 
+**历史保存** 指的是对象在域模型中是否具有历史记录.
+
 > Entities have such a history (even though you might not store it explicitly). In other words, entities *live in a continuum*: they are created, modified, and deleted — all at different points in time. Value objects don’t have a history; they are a mere snapshot of some state.
+
+实体就具有这样的历史记录 (即使你可能没有明确存储它). 换句话说, 实体是连续存在的: 它们在不同的时间点呗创建, 修改和删除. 值对象没有历史, 它们仅仅是某些状态的快照.
 
 > The modification of a value object implicitly extends its lifetime beyond just being a snapshot. Such a modification assumes the value object also has a history, which goes against the requirement of not preserving history in value objects.
 
+值对象的修改隐式地延长了它的生产周期, 而不仅仅是作为快照. 这样的修改假设值对象也具有历史记录, 这违反了值对象中不保留历史记录的要求.
+
 > History preservation is what answers the question of "*Can you treat Entity and Value Object as the same concept?*". That answer is **no**.
 
-## Summary
+历史保存是回答 "`可以将实体对象和值对象视为同一个概念?`" 的问题的回答, 那答案是否定的.
+
+## 总结 (Summary)
 
 > The answer to the question of "Can we consider an entity as a value object that compares only its Id for equality?" boils down to three parts:
 
+"`我们是否可以在仅仅比较其 Id 的相等性时, 将实体视为值对象?`" 这个问题的回答可以归结为三个部分:
+
 > - In terms of **identity comparison**, the answer is **yes**.
+
+- 就标识比较而言, 答案是可以.
+
 > - In terms of **immutability**, the answer is **yes**.
+
+- 就不可变性而言, 答案是可以.
+
 > - In terms of **history preservation**, the answer is **no**.
 
+- 就历史保护而言, 答案是不能.
+
 > Thus, the overall answer is also **no**.
+
+因此, 总的答案也是否定的.
