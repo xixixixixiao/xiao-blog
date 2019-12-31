@@ -14,6 +14,10 @@
 
 ![解决方案结构](./images/self-hosting-solution.png)
 
+- 建立空白解决方案及 Winforms 工程,
+- 新建 `Controllers` 文件夹用于存放 WebApi 代码,
+- 新建 `Services` 文件夹用于存放服务代码.
+
 ### 1.2 拖拽控件
 
 绘制必要控件, 布局如下:
@@ -28,44 +32,65 @@
 /// <summary>
 /// HTTP service.
 /// </summary>
-public class HttpService
+public class HttpService : IDisposable
 {
+    /// <summary>
+    /// HTTP server's listening port.
+    /// </summary>
+    public int Port { get; set; }
+
     /// <summary>
     /// HTTP self hosting.
     /// </summary>
-    private HttpSelfHostServer _server;
+    private readonly HttpSelfHostServer _server;
+
+    /// <summary>
+    /// HTTP server.
+    /// </summary>
+    /// <param name="port">Listening port.</param>
+    public HttpService(int port)
+    {
+        this.Port = port;
+
+        var config = new HttpSelfHostConfiguration($"http://0.0.0.0:{this.Port}");
+
+        config.MapHttpAttributeRoutes();
+        config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}");
+
+        _server = new HttpSelfHostServer(config);
+    }
 
     #region HTTP Service
 
     /// <summary>
     /// start HTTP server.
     /// </summary>
-    /// <param name="port">the port of the http server</param>
-    public void StartHttpServer(string port)
+    public Task StartHttpServer()
     {
-        var config = new HttpSelfHostConfiguration($"http://0.0.0.0:{port}");
-
-        config.MapHttpAttributeRoutes();
-        config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}");
-
-        this._server = new HttpSelfHostServer(config);
-        this._server.OpenAsync().Wait();
+        return _server.OpenAsync();
     }
 
     /// <summary>
     /// Close HTTP server.
     /// </summary>
-    public void CloseHttpServer()
+    public Task CloseHttpServer()
     {
-        this._server.CloseAsync().Wait();
-        this._server.Dispose();
+        return _server.CloseAsync();
     }
 
     #endregion
+
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    /// </summary>
+    public void Dispose()
+    {
+        _server?.Dispose();
+    }
 }
 ```
 
-WebApi 自托管服务主要由 `HttpSelfHostServer` 实现.
+WebApi 自托管服务主要由 `HttpSelfHostServer` 实现, 其 `OpenAsync` 开启 HTTP 监听, `CloseAsync` 关闭 HTTP 监听.
 
 ```csharp
 config.MapHttpAttributeRoutes();
@@ -84,15 +109,7 @@ public class MainForm:Form
     /// <summary>
     /// Http service.
     /// </summary>
-    private readonly HttpService _http;
-
-    public MainForm()
-    {
-        /**
-         * initialize http service.
-         */
-        _http = new HttpService();
-    }
+    private HttpService _http;
 }
 
 ```
@@ -103,16 +120,21 @@ public class MainForm:Form
 /// <summary>
 /// start the http server.
 /// </summary>
-private void StartButton_Click(object sender, EventArgs e)
+private async void StartButton_Click(object sender, EventArgs e)
 {
     /**
      * start.
      */
     try
     {
-        var port = this.PortNum.Value;
+        var port = Convert.ToInt32(this.PortNum.Value);
 
-        _http.StartHttpServer($"{port}");
+        /**
+         * initialize http service.
+         */
+        _http = new HttpService(port);
+
+        await _http.StartHttpServer();
     }
     catch (Exception exception)
     {
@@ -127,15 +149,15 @@ private void StartButton_Click(object sender, EventArgs e)
 /// <summary>
 /// close the http server.
 /// </summary>
-private void CloseButton_Click(object sender, EventArgs e)
+private async void CloseButton_Click(object sender, EventArgs e)
 {
     /**
      * close.
      */
     try
     {
-        _http.CloseHttpServer();
-
+        await _http.CloseHttpServer();
+        _http.Dispose();
     }
     catch (Exception exception)
     {
@@ -172,3 +194,7 @@ public class HomeController : ApiController
 ![解决方案完整结构](./images/self-hosting-solution-complete.png)
 
 [下载完整示例代码 (GitHub)](https://github.com/xixixixixiao/xiao-blog/tree/master/solutions/SelfHostingDemo)
+
+## 6. 注意事项
+
+程序需要拥有 **管理员权限** 才能开启 HTTP 监听, 在调试时, 若 Visual Studio 为拥有管理员权限, 则无法正常运行. 同样地, 在程序编译生成之后运行时亦需要权限.
