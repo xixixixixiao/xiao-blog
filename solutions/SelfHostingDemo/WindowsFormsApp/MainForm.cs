@@ -11,7 +11,7 @@ namespace WindowsFormsApp
         /// <summary>
         /// Http service.
         /// </summary>
-        private readonly HttpService _http;
+        private HttpService _http;
 
         public MainForm()
         {
@@ -22,28 +22,28 @@ namespace WindowsFormsApp
              */
             this.StartButton.Enabled = true;
             this.CloseButton.Enabled = false;
-
-            /**
-             * initialize http service.
-             */
-            _http = new HttpService();
         }
 
         /// <summary>
         /// start the http server.
         /// </summary>
-        private void StartButton_Click(object sender, EventArgs e)
+        private async void StartButton_Click(object sender, EventArgs e)
         {
             /**
              * start.
              */
             try
             {
-                var port = this.PortNum.Value;
+                var port = Convert.ToInt32(this.PortNum.Value);
 
-                _http.StartHttpServer($"{port}");
+                /**
+                 * initialize http service.
+                 */
+                _http = new HttpService(port);
 
-                MessageBox.Show("Start successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                await _http.StartHttpServer();
+
+                MessageBox.Show("Started successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 /**
                  * disable the start button and enable the close button.
@@ -54,6 +54,9 @@ namespace WindowsFormsApp
             }
             catch (AggregateException exception)
             {
+                /**
+                 * PLZ "Run as administrator".
+                 */
                 if (exception.Flatten().InnerExceptions.Any(ex => ex is AddressAccessDeniedException))
                 {
                     MessageBox.Show("Permission denied.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -68,16 +71,17 @@ namespace WindowsFormsApp
         /// <summary>
         /// close the http server.
         /// </summary>
-        private void CloseButton_Click(object sender, EventArgs e)
+        private async void CloseButton_Click(object sender, EventArgs e)
         {
             /**
              * close.
              */
             try
             {
-                _http.CloseHttpServer();
+                await _http.CloseHttpServer();
+                _http.Dispose();
 
-                MessageBox.Show("Close successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Closed successfully!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 /**
                  * disable the start button and enable the close button.

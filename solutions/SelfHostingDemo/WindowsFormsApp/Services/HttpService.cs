@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Http.SelfHost;
 
 namespace WindowsFormsApp.Services
@@ -6,39 +8,60 @@ namespace WindowsFormsApp.Services
     /// <summary>
     /// HTTP service.
     /// </summary>
-    public class HttpService
+    public class HttpService : IDisposable
     {
+        /// <summary>
+        /// HTTP server's listening port.
+        /// </summary>
+        public int Port { get; set; }
+
         /// <summary>
         /// HTTP self hosting.
         /// </summary>
-        private HttpSelfHostServer _server;
+        private readonly HttpSelfHostServer _server;
+
+        /// <summary>
+        /// HTTP server.
+        /// </summary>
+        /// <param name="port">Listening port.</param>
+        public HttpService(int port)
+        {
+            this.Port = port;
+
+            var config = new HttpSelfHostConfiguration($"http://0.0.0.0:{this.Port}");
+
+            config.MapHttpAttributeRoutes();
+            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}");
+
+            _server = new HttpSelfHostServer(config);
+        }
 
         #region HTTP Service
 
         /// <summary>
         /// start HTTP server.
         /// </summary>
-        /// <param name="port">the port of the http server</param>
-        public void StartHttpServer(string port)
+        public Task StartHttpServer()
         {
-            var config = new HttpSelfHostConfiguration($"http://0.0.0.0:{port}");
-
-            config.MapHttpAttributeRoutes();
-            config.Routes.MapHttpRoute("DefaultApi", "api/{controller}/{action}");
-
-            this._server = new HttpSelfHostServer(config);
-            this._server.OpenAsync().Wait();
+            return _server.OpenAsync();
         }
 
         /// <summary>
         /// Close HTTP server.
         /// </summary>
-        public void CloseHttpServer()
+        public Task CloseHttpServer()
         {
-            this._server.CloseAsync().Wait();
-            this._server.Dispose();
+            return _server.CloseAsync();
         }
 
         #endregion
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            _server?.Dispose();
+        }
     }
 }
