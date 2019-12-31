@@ -8,7 +8,7 @@
 
 ## 1. 新建解决方案以及 WinForms 工程
 
-### 1.1 新建解决方案及工程
+### 1.1. 新建解决方案及工程
 
 如下图所示:
 
@@ -18,13 +18,19 @@
 - 新建 `Controllers` 文件夹用于存放 WebApi 代码,
 - 新建 `Services` 文件夹用于存放服务代码.
 
-### 1.2 拖拽控件
+### 1.2. 拖拽控件
 
 绘制必要控件, 布局如下:
 
 ![窗体布局](./images/self-hosting-main-form.png)
 
 备注: 绘制一个 NumericUpDown 和两个 Button 控件.
+
+### 1.3. 引用相关 NuGet 包
+
+- `Microsoft.AspNet.WebApi.Client`
+- `Microsoft.AspNet.WebApi.Core`
+- `Microsoft.AspNet.WebApi.SelfHost`
 
 ## 2. 开发 HTTP 服务类
 
@@ -90,7 +96,7 @@ public class HttpService : IDisposable
 }
 ```
 
-WebApi 自托管服务主要由 `HttpSelfHostServer` 实现, 其 `OpenAsync` 开启 HTTP 监听, `CloseAsync` 关闭 HTTP 监听.
+WebApi 自托管服务主要由 `HttpSelfHostServer` 实现, 其 `OpenAsync` 方法开启 HTTP 监听, `CloseAsync` 方法关闭 HTTP 监听.
 
 ```csharp
 config.MapHttpAttributeRoutes();
@@ -103,7 +109,6 @@ config.MapHttpAttributeRoutes();
 在 MainForm 窗体程序中引用 HTTP 服务:
 
 ```csharp
-
 public class MainForm:Form
 {
     /// <summary>
@@ -111,10 +116,9 @@ public class MainForm:Form
     /// </summary>
     private HttpService _http;
 }
-
 ```
 
-### 3.1 编写开启 HTTP 服务代码
+### 3.1. 编写开启 HTTP 服务代码
 
 ```csharp
 /// <summary>
@@ -143,7 +147,7 @@ private async void StartButton_Click(object sender, EventArgs e)
 }
 ```
 
-### 3.2 编写关闭 HTTP 服务代码
+### 3.2. 编写关闭 HTTP 服务代码
 
 ```csharp
 /// <summary>
