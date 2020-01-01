@@ -62,7 +62,7 @@ public abstract class Entity : ValueObject
 
 实体通过它们的标识符在彼此之间进行比较. 对于两个对象, 若他们拥有相同的 Id, 则被认为是相等的.
 
-![Identifier equality](./images/identifier-equality.png)
+![Identifier equality](./images/is-entity-same-as-value-object/identifier-equality.png)
 
 *Identifier equality (标识符的相等)*
 
@@ -70,7 +70,7 @@ public abstract class Entity : ValueObject
 
 值对象则根据他们的内容去比较. 若两个值对象的内容完全相同, 则被认为相等.
 
-![Identifier equality](./images/structural-equality.png)
+![Identifier equality](./images/is-entity-same-as-value-object/structural-equality.png)
 
 *Structural equality (结构的相等)*
 
