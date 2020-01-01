@@ -1,4 +1,4 @@
-# 应用领域驱动设计, 第一章 - 需求和建模 (Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling)
+# 应用领域驱动设计, 第〇章 - 需求和建模 (Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling)
 
 > About a year ago I have written a series of articles about Domain-driven design, you can find the [main article here](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html). Looking back I've realised that I've committed the most typical mistake and started to code my business domain without requirements or any draft designs!
 
@@ -81,21 +81,13 @@ Now I am going extract nouns and verbs from the stories above. I am looking for 
 ## 名词 (Nouns)
 
 - 客户 (Customer)
-
 - 产品 (Item)
-
 - 订单 (Order)
-
 - 购物车 (Shopping Cart)
-
 - 收货地址 (Address)
-
 - 账单 (Invoice)
-
 - 交付 (Delivery)
-
 - 税费 (Tax)
-
 - 信用卡资料 (Credit Card Information)
 
 > *Note: I've removed duplicates for better, more official names, for example Item = Product, Order = Purchase, etc.
