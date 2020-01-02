@@ -12,7 +12,7 @@
 
 > This one comes from Panos Kousidis who asked a insightful question in the comments to [one of my posts about value objects](https://enterprisecraftsmanship.com/posts/value-object-better-implementation/):
 
-这个问题来来源于 Panos Kousidis, 他在我的一篇 *[关于值对象的一篇文章](https://enterprisecraftsmanship.com/posts/value-object-better-implementation/)* 的评论中提出了一个极为深刻的问题:
+这个问题来源于 Panos Kousidis, 他在我的一篇 *[关于值对象的一篇文章](https://enterprisecraftsmanship.com/posts/value-object-better-implementation/)* 的评论中提出了一个极为深刻的问题:
 
 > *Can we consider an "Entity" as a "ValueObject" that compares only its Id for equality? Can this result in defining the base entity class as*
 
@@ -113,7 +113,7 @@ public sealed class Error : ValueObject
 
 > If you pass errors to external systems, those systems shouldn’t ever bind to error messages, only to their codes. This is why the `Error` class uses only the `Code` field for identity comparison: changes in debug messages don’t matter; two errors with the same code are treated as the same error even if their messages differ.
 
-如果你将错误传递给外部系统, 那么这些系统不应该与错误信息绑定, 而应该仅仅绑定到给他们错误码. 这就是为什么 `Error` 类仅使用 `Code` 字段作为标识符比较: 调试信息的变化无关紧要. 具有相同错误码的两个错误被认为是相同的错误, 即使它们的消息不同.
+如果你将错误 (`Error`) 传递给外部系统, 那么这些系统不应该与错误信息 (`Message`) 绑定, 而应该仅仅绑定到给他们错误码 (`Code`). 这就是为什么 `Error` 类仅使用 `Code` 字段作为标识符比较: 调试信息的变化无关紧要. 具有相同错误码的两个错误被认为是相同的错误, 即使它们的消息不同.
 
 > This is where Panos Kousidis' question comes from too. If you can exclude some fields from a value object’s identity comparison, can you also exclude all of them (except for the Id) and end up with the code like the following?
 
