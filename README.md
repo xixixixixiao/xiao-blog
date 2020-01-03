@@ -8,7 +8,7 @@
 
 - 2019-12-30 [C# 8 已成旧闻, 向前, 抵达 C# 9!](./translations/csharp-8-is-old-news-onward-to-csharp-9.md)
 
-- 2020-01-02 [应用领域驱动设计, 第〇章 - 需求和建模](http://www.zankavtaskin.com/2014/12/applied-domain-driven-design-ddd-part-0.html) (翻译中)
+- 2020-01-02 [应用领域驱动设计, 第〇章 - 需求和建模](./translations/applied-domain-driven-design-ddd-part-0.md) (校对中)
 
 ## BLOG
 
