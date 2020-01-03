@@ -1,25 +1,29 @@
-# Applied Domain-Driven Design (DDD), Part 1 - Basics
+# 应用领域驱动设计, 第一章 - 基础 Applied Domain-Driven Design (DDD), Part 1 - Basics
 
 > When I started learning domain-driven design there was a lot of theory to take in, Eric Evans did a great job explaining it from theoretical point of view. As a software engineer I wanted to see some code and just to follow some examples, I found very little resource out there that showed applied domain-driven design in C#.
 
+当我开始学习领域驱动设计时, 有大量的理论需要吸收, Eric Evans 从理论的视角做了非常好的解释. 作为一个软件开发者我想查看一些代码和效仿一些示例, 但是仅找到很少资源用 C# 去展示领域驱动设计的应用.
+
 > Over the coming weeks I will be posting series of articles on the subject, it will be my attempt to make domain-driven design simpler and easier follow. Articles that are published:
 
-- [Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling](http://www.zankavtaskin.com/2014/12/applied-domain-driven-design-ddd-part-0.html)
-- [Applied Domain-Driven Design (DDD), Part 1 - Basics](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html)
-- [Applied Domain-Driven Design (DDD), Part 2 - Domain events](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
-- [Applied Domain-Driven Design (DDD), Part 3 - Specification Pattern](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
-- [Applied Domain-Driven Design (DDD), Part 4 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
-- [Applied Domain-Driven Design (DDD), Part 5 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
-- [Applied Domain-Driven Design (DDD), Part 6 - Application Services](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
-- [Applied Domain-Driven Design (DDD), Part 7 - Read Model](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
-- [Applied Domain-Driven Design (DDD), My Top 5 Best Practices](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
-- [Applied Domain-Driven Design (DDD), Event Logging & Sourcing For Auditing](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
+接下来的几周 (作者是在 2013 年 09 月写下这一系列文章的) 我将会发表关于这个主题的一系列文章, 我将尝试让领域驱动设计更简单和更容易理解. 这系列的文章在这里:
 
-![Domain Driven Design Architecture](./images/applied-domain-driven-design-ddd-part-1/DDD_png_pure.png)
+- [应用领域驱动设计, 第〇章 - 需求和建模](applied-domain-driven-design-ddd-part-0.md)
+- [应用领域驱动设计, 第一章 - 基础](applied-domain-driven-design-ddd-part-1.md)
+- [应用领域驱动设计, 第二章 - Domain events](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
+- [应用领域驱动设计, 第三章 - Specification Pattern](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
+- [应用领域驱动设计, 第四章 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
+- [应用领域驱动设计, 第五章 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+- [应用领域驱动设计, 第六章 - Application Services](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+- [应用领域驱动设计, 第七章 - Read Model](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
+- [应用领域驱动设计, My Top 5 Best Practices](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
+- [应用领域驱动设计, Event Logging & Sourcing For Auditing](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
 
-*Domain Driven Design Architecture (it's simpler then it looks)*
+![领域驱动设计架构 (Domain Driven Design Architecture)](./images/applied-domain-driven-design-ddd-part-1/DDD_png_pure.png)
 
-## 1. Before we get started let's see why DDD is so great
+*领域驱动设计架构 (这看起来比较简单) [Domain Driven Design Architecture (it's simpler then it looks)]*
+
+## 1. 领域驱动设计架构 (Before we get started let's see why DDD is so great)
 
 > - Development becomes domain oriented not UI/Database oriented
 > - Domain layer captures all of the business logic, making your service layer very thin i.e. just a gateway in to your domain via DTO's
@@ -29,7 +33,7 @@
 
 > Through this series of articles I will be focusing on a simple and made up e-commerce domain.
 
-## 2. So, let's see some code
+## 2. 让我们来瞧一些代码 (So, let's see some code)
 
 ```csharp
 public class Product
@@ -64,7 +68,7 @@ public class Purchase
 
 > When a customer shops online they choose items first, they browse around, and then eventually they will make a purchase. So we need something that will hold the products, lets call it a Cart, this object will have no identity and it will be transient.
 
-## 3. Cart is my value object
+## 3. 购物车是我的值对象 (Cart is my value object)
 
 ```csharp
 public class Cart
@@ -77,7 +81,7 @@ public class Cart
 
 > We can use what was said above as a business case "Customer can go ahead and checkout these products when they are ready".
 
-## 4. Code would look like
+## 4. 代码应该像这样 (Code would look like)
 
 ```csharp
 Cart cart = new Cart()
@@ -110,7 +114,7 @@ Purchase purchase = customer.Checkout(cart);
 
 > Code above needs to be re-factored, if we return back a purchase are we going to then add it to the collection of the customer i.e. Customer.Purchases.Add(...)? This seems strange, if we have a method Customer.Checkout(...) we should aim to capture relevant data right there and then. Customer should only expose business methods, if we have to expose something else in order to capture data then we are not doing it right.
 
-## 5. Lets refine further
+## 5. 让我们更进一步改善 (Lets refine further)
 
 ```csharp
 public class Customer
@@ -138,7 +142,7 @@ public class Customer
 
 > Ok, so now when customer checks-out a cart, purchase will be added to the purchase collection and also returned  so it can be used further in our logic. This is great, but another software engineer can go in and compromise our domain. They can just add Orders directly to the customer without checking out i.e. Customer.Orders.Add(...).
 
-## 6. Lets refine further
+## 6. 让我们更进一步改善 (Lets refine further)
 
 ```csharp
 public class Customer
@@ -278,7 +282,7 @@ public class Customer
 }
 ```
 
-## 7. Example usage
+## 7. 用法示例 (Example usage)
 
 ```csharp
 Cart cart = Cart.Create(new List() { new Product(), new Product() });
@@ -286,13 +290,13 @@ Customer customer = Customer.Create("josh", "smith", "josh.smith@microsoft.com")
 Purchase purchase = customer.Checkout(cart);
 ```
 
-## 8. Summary
+## 8. 总结 (Summary)
 
 > - DDD is all about capturing business logic in the domain i.e. entities, aggregate roots, value objects and domain service.
 > - DDD is all about thought process and challenging where should what go and what is most logical.
 > - DDD is all about constant re-factoring and maturing your model as you get further requirements. More requirements your receive the better and stronger your domain will be. Therefore requirements are gold and something that software engineers should always strive to understand.
 
-## 9. Useful links
+## 9. 一些有用链接 (Useful links)
 
 - [Onion architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/), a very good example of what domain-driven design is all about
 - [Aggregate root](http://martinfowler.com/bliki/DDD_Aggregate.html), great explanation of what aggregate root actually is
