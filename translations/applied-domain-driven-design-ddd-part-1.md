@@ -23,15 +23,31 @@
 
 *领域驱动设计架构 (这看起来比较简单) [Domain Driven Design Architecture (it's simpler then it looks)]*
 
-## 1. 领域驱动设计架构 (Before we get started let's see why DDD is so great)
+## 1. 在开始之前让我们看看为什么领域驱动设计如此出色 (Before we get started let's see why DDD is so great)
 
-> - Development becomes domain oriented not UI/Database oriented
-> - Domain layer captures all of the business logic, making your service layer very thin i.e. just a gateway in to your domain via DTO's
-> - Domain oriented development allows you to implement true service-oriented architecture i.e. making your services reusable as they are not UI/Presentation layer specific 
-> - Unit tests are easy to write as code scales horizontally and not vertically, making your methods thin and easily testable
-> - DDD is a set of Patterns and Principles, this gives developers a framework to work with, allowing everyone in the development team to head in the same direction
+> - **Development** becomes domain oriented not UI/Database oriented
+
+- **开发** 转变向面向领域而非面向 UI 或数据库开发.
+
+> - **Domain layer** captures all of the business logic, making your service layer very thin i.e. just a gateway in to your domain via DTO's
+
+- **领域层** 捕获了所有的业务逻辑, 让你的服务层十分轻薄精简, 即只是领域的一个网关, 仅仅让数据传输对象 (DTO) 通过.
+
+> - **Domain oriented development** allows you to implement true service-oriented architecture i.e. making your services reusable as they are not UI/Presentation layer specific
+
+- **面向领域的开发** 让你实现真正的面向服务架构, 即让你的服务可重用化; 因为它们不是特定于 UI 或表示层.
+
+> - **Unit tests** are easy to write as code scales horizontally and not vertically, making your methods thin and easily testable
+
+- **单元测试** 更容易编写. 因为代码是水平扩展, 而非垂直扩展. 让你的方法轻薄且易于测试.
+
+> - **DDD** is a set of Patterns and Principles, this gives developers a framework to work with, allowing everyone in the development team to head in the same direction
+
+- **领域驱动设计** 一组模式和原则, 为开发者提供了一套可用框架, 使开发团队的每一位开发者向着共同的方向前进.
 
 > Through this series of articles I will be focusing on a simple and made up e-commerce domain.
+
+通过这个系列的文章, 我会重点介绍一个简单且虚构的电子商城领域.
 
 ## 2. 让我们来瞧一些代码 (So, let's see some code)
 
@@ -66,7 +82,11 @@ public class Purchase
 
 > Code above represents anemic classes. Some developers would stop here, and use these classes to pass data to service and then bind this data to the UI. Let's carry on and mature our models.
 
+以上的代码表示了几个贫血类. 有些开发者到这步就停下来了, 然后用这些类传输数据给服务和绑定数据给 UI. 现在, 让我们的模型继续成熟下去.
+
 > When a customer shops online they choose items first, they browse around, and then eventually they will make a purchase. So we need something that will hold the products, lets call it a Cart, this object will have no identity and it will be transient.
+
+当一个客户现在购物时, 他们会先选择商品, 然后再浏览这件商品, 最后他们才将购买. 所以, 我们需要某个东西去持有商品, 我们把这个东西叫做购物车, 这个对象是没有 Id 且仅临时的.
 
 ## 3. 购物车是我的值对象 (Cart is my value object)
 
@@ -79,9 +99,13 @@ public class Cart
 
 > Cart simply contains a list of products. Customer can go ahead and checkout these products when they are ready.
 
+购物车仅包含了一个产品的列表. 当客户已经挑选好产品时, 之后就可以继续结账了.
+
 > We can use what was said above as a business case "Customer can go ahead and checkout these products when they are ready".
 
-## 4. 代码应该像这样 (Code would look like)
+我们可将上述的情形: "当客户已经挑选好产品时, 之后就可以继续结账了" 作为一个业务.
+
+## 4. 代码如下所示 (Code would look like)
 
 ```csharp
 Cart cart = new Cart()
@@ -104,9 +128,15 @@ Purchase purchase = customer.Checkout(cart);
 
 > What's going on here? Customer checks-out the product and gets a purchase back. Normally in business context you get a receipt back, this provides basic information about the purchase, discounts, and acts as a guarantee that i can use to refer back to my purchase.
 
+观察现在的变化; 客户对购物车里的商品进行结账, 然后获得了订单. 在业务上下文中, 通常会收到回执; 此回执提供了有关订购, 折扣等基础信息; 还能作为我的购物的凭证的参考.
+
 > I could rename Purchase to Receipt, but wait, what's does purchase mean in the business context?
 
-*"to acquire by the payment of money or its equivalent; buy."* - Dictionary.com
+我可以把 `购置` 重命名为 `收据`, 但是, 稍等下, `购置` 在业务上下文的含义是什么?
+
+> *"to acquire by the payment of money or its equivalent; buy."* - Dictionary.com
+
+*"以付款或等值的方式获得; 购买."* - Dictionary.com
 
 > (Returning purchase object would make sense if customer actually made a purchase i.e. we pre-authenticated a customer and then simply passed payment authentication code to the checkout, but to keep this simple we are not going to do this)
 
