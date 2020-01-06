@@ -1,8 +1,8 @@
 # Applied Domain-Driven Design (DDD), Part 3 - Specification Pattern
 
-Specification pattern is great, David Fancher wrote a great piece on it, i suggest you read it before you continue.
+> Specification pattern is great, David Fancher wrote a great piece on it, i suggest you read it before you continue.
 
-In short, specification pattern allows you to chain business queries.
+> In short, specification pattern allows you to chain business queries.
 
 ## Example
 
@@ -122,23 +122,23 @@ public interface IRepository<TEntity>
 
 ## Summary
 
-- Specification allows you to query data in a abstract way i.e. you can query memory collections or an RDBMS. This ensures persistence/infrastructure ignorance.
-- Specification encapsulates a business rule in one spec.
-- Specification pattern allows you to chain your business rules up.
-- Specification makes your domain layer DRY i.e. you don't need to write same LINQ all over again.
-- Specifications are easy to unit test.
-- Specifications are stored in the domain layer, this provides full visibility.
-- Specifications are super elegant.
+> - Specification allows you to query data in a abstract way i.e. you can query memory collections or an RDBMS. This ensures persistence/infrastructure ignorance.
+> - Specification encapsulates a business rule in one spec.
+> - Specification pattern allows you to chain your business rules up.
+> - Specification makes your domain layer DRY i.e. you don't need to write same LINQ all over again.
+> - Specifications are easy to unit test.
+> - Specifications are stored in the domain layer, this provides full visibility.
+> - Specifications are super elegant.
 
 ## Tips
 
-- Break complex business logic rules down in your specification as NHibernate might struggle to interpret them in to a SQL query. This is a generally good tip as you don't want messy SQL hitting your database.
-- Query data around the entity properties, don't try and change the properties on the entity i.e. instead of writing customer.Created.AddDays(30) >= DateTime.Today write customer.Created >= DateTime.Today.AddDays(-30). The former will try and compile it as a SQL and will fail as it's too complex, the latter will convert the value to a parameter.
-- As specifications are logical queries they should not change state of the caller or the calling objects. i.e. don't call state changing methods, such as customer.Checkout(....) && customer.Active == true. This tip goes hand in hand with the tip above.
+> - Break complex business logic rules down in your specification as NHibernate might struggle to interpret them in to a SQL query. This is a generally good tip as you don't want messy SQL hitting your database.
+> - Query data around the entity properties, don't try and change the properties on the entity i.e. instead of writing customer.Created.AddDays(30) >= DateTime.Today write customer.Created >= DateTime.Today.AddDays(-30). The former will try and compile it as a SQL and will fail as it's too complex, the latter will convert the value to a parameter.
+> - As specifications are logical queries they should not change state of the caller or the calling objects. i.e. don't call state changing methods, such as customer.Checkout(....) && customer.Active == true. This tip goes hand in hand with the tip above.
 
 ## Useful links
 
-- [Specifications, Expression Trees, and NHibernate](http://davefancher.com/2012/07/03/specifications-expression-trees-and-nhibernate/)  a fantastic article with great examples on how to use spefifications with NHibernate.
-- [Specification Pattern](http://en.wikipedia.org/wiki/Specification_pattern), basic explanation of boolean specification pattern.
+> - [Specifications, Expression Trees, and NHibernate](http://davefancher.com/2012/07/03/specifications-expression-trees-and-nhibernate/)  a fantastic article with great examples on how to use spefifications with NHibernate.
+> - [Specification Pattern](http://en.wikipedia.org/wiki/Specification_pattern), basic explanation of boolean specification pattern.
 
-*Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
+> *Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
