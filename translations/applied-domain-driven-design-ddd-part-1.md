@@ -408,7 +408,7 @@ Purchase purchase = customer.Checkout(cart);
 
         3, 这是个很好的问题, 我想这里有几个问题.
 
-        让我们先从基础设施层开始. 你得 "领域模型层" 甚至不应该知道 "基础设施层". 可通过把数据持久化和任何其它基础设施层的接口放在 "领域模型层" 来实现这一点. 存储卡的实际实现位于基础设施层.
+        让我们先从基础设施层开始. 你的 "领域模型层" 甚至不应该知道 "基础设施层". 可通过把数据持久化和任何其它基础设施层的接口放在 "领域模型层" 来实现这一点. 仓储的真实实现位于基础设施层.
 
         Your infrastructure layer will need to reference "Domain Model Layer" so that Infrastructure knows what entities / objects it's dealing with.
 
@@ -426,9 +426,9 @@ Purchase purchase = customer.Checkout(cart);
 
     1. **评论**
 
-        Great post.
+        非常好的文章.
 
-        Could you explain why Development becomes domain oriented not UI/Database oriented ? why not Database orianted?
+        您能解释下什么开发转变成面向领域, 而不是面向 UI/数据库吗? 为什么不面向数据库了?
 
     2. **回答**
 
