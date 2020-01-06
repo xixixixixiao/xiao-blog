@@ -82,11 +82,11 @@ public class Purchase
 
 > Code above represents anemic classes. Some developers would stop here, and use these classes to pass data to service and then bind this data to the UI. Let's carry on and mature our models.
 
-以上的代码表示了几个贫血类. 有些开发者到这步就停下来了, 然后用这些类传输数据给服务和绑定数据给 UI. 现在, 让我们的模型继续成熟下去.
+以上的代码表示了几个贫血类. 有些开发者到这一步就停下来了, 然后利用这些类传输数据给服务和绑定数据给 UI. 现在, 让我们的模型继续完善下去.
 
 > When a customer shops online they choose items first, they browse around, and then eventually they will make a purchase. So we need something that will hold the products, lets call it a Cart, this object will have no identity and it will be transient.
 
-当一个客户现在购物时, 他们会先选择商品, 然后再浏览这件商品, 最后他们才将购买. 所以, 我们需要某个东西去持有商品, 我们把这个东西叫做购物车, 这个对象是没有 Id 且仅临时的.
+当一个客户在线购物时, 他们会先选择商品, 然后再到处浏览这件商品, 最后他们才将购买. 因此, 我们需要某个东西去容纳商品, 把这个东西叫做购物车, 这个对象是没有 Id 且仅临时的.
 
 ## 3. 购物车是我的值对象 (Cart is my value object)
 
@@ -132,7 +132,7 @@ Purchase purchase = customer.Checkout(cart);
 
 > I could rename Purchase to Receipt, but wait, what's does purchase mean in the business context?
 
-我可以把 `交易` 重命名为 `收据`, 但是, 稍等下, `购置` 在业务上下文的含义是什么?
+我可以把 `交易` 重命名为 `收据`, 但是, 稍等下, `交易` 在业务上下文的含义是什么?
 
 > *"to acquire by the payment of money or its equivalent; buy."* - Dictionary.com
 
@@ -140,17 +140,17 @@ Purchase purchase = customer.Checkout(cart);
 
 > (Returning purchase object would make sense if customer actually made a purchase i.e. we pre-authenticated a customer and then simply passed payment authentication code to the checkout, but to keep this simple we are not going to do this)
 
-(如果客户确实进行了订购, 返回订购对象是有意义的. 比如, 我们预先验证了一个客户, 然后简单地把付款码传递给结账; 但是为了保持简单, 我们不打算这样做.)
+(如果客户确实进行了交易, 返回交易对象是有意义的. 也就是, 我们预先认证客户, 然后简单地把付款码传递给结账; 但是为了保持简单, 我们不打算这样做.)
 
 > Customer can now checkout, when they checkout they will get back a Purchase object (this will allow further data manipulation).
 
-客户现在可以付款, 当他们付款时, 他们会获取一个订购对象 (这个将允许更多的数据操作).
+客户现在可以付款, 当他们付款时, 客户会获取一个交易对象 (这个将允许进一步的数据操作).
 
 > Code above needs to be re-factored, if we return back a purchase are we going to then add it to the collection of the customer i.e. Customer.Purchases.Add(...)? This seems strange, if we have a method Customer.Checkout(...) we should aim to capture relevant data right there and then. Customer should only expose business methods, if we have to expose something else in order to capture data then we are not doing it right.
 
-上述代码需要进行重构, 如果我们打算返回一个订购对象然后将他添加到客户的集合, 即 `Customer.Purchaese.Add(...)`? 这看起来太奇怪了, 如果我们有个方法 `Customer.Chcekout(...)`, 我们应该立即捕获相关数据. `Customer` 只应该暴露业务方法, 如果我们为了捕获数据而不得不公开其它内容, 那么我们做得就不对了.
+上述代码需要进行重构, 如果我们打算返回一个`交易`对象, 然后将它添加到`客户`的`交易集合`中, 即 `Customer.Purchaese.Add(...)`. 这显得太奇怪了, 如果我们有个方法 `Customer.Chcekout(...)`, 则我们的目标应该是立即捕获相关数据. `客户` 只应该暴露业务方法, 如果我们只为了捕获数据而不得不公开其它内容, 那么我们做得就不对了.
 
-## 5. 让我们更进一步改善 (Lets refine further)
+## 5. 让我们进一步改善 (Lets refine further)
 
 ```csharp
 public class Customer
@@ -209,7 +209,7 @@ public class Customer
 
 > Now orders can't be compromised, and code forces software engineers to checkout a cart. What about other properties? They are not protected. We know customer state can't just be changed, we have to go through a process. You need to ask your self, when personal information is changed on the customer, do we need to send an email out? Do we need to call some 3rd party API to sync up our records? Right now you might not have a requirement from your business analysts to do anything like this, so lets not worry about it, lets just protect these fields so they can't be changed.
 
-现在, 订单不能被破坏了; 代码强制开发者对 *购物车* 做 *付款* 操作.那么其它属性呢, 他们都不是被保护的. 我们知道客户的状态是不能被改变的, 我们必须通过程序. 你需要问你自己, 当客户的个人信息被改变了, 我们需要给他发一封电子邮件吗? 我们需要调用第三方的 API 同步我们的记录吗? 此刻你可能还没有你得业务分析师对此有任何要求, 所以让我们不用关心它, 让我们保护这些字段让他们不能被更改.
+现在, 订单不能被破坏了; 代码强制开发者对 *购物车* 做 *付款* 操作.那么其它属性呢, 他们没有受到保护. 我们知道客户的状态不能仅被更改, 必须通过一个过程. 你需要问下你自己, 当改变客户的个人信息时, 我们是否需要给他发一封电子邮件? 是否需要调用第三方的 API 同步记录? 此刻, 业务分析师可能还没有对你作此类需求, 所以不必关心它, 仅仅保护这些字段使之不能被更改即可.
 
 ```csharp
 public class Customer
@@ -237,11 +237,11 @@ public class Customer
 
 > That's great, now other software engineers in the team can't change personal information without adding a new method such as Customer.ChangeDetails(...).
 
-这很好, 现在当没有添加新的方法, 比如 `Customer.ChangeDetails(...)`, 这个团队的其它的开发者也不能修改个人信息了.
+这很好, 当没有添加新的方法, 比如 `Customer.ChangeDetails(...)`, 现在这个团队中的其它的开发者也不能修改个人信息了.
 
 > **Taking in to account what was said above, thinking process, constant re-factoring and making the model match the actual business domain, this is what I've got so far:**
 
-**综合以上所述, 思考过程, 不断重构; 使模型与真是业务领域相匹配, 这就是我目前所得到的:**
+**综合以上所描述的, 思考过程, 不断重构; 使模型与真实业务领域相匹配, 这就是我目前所得到的代码:**
 
 ```csharp
 public class Product
@@ -346,7 +346,7 @@ Purchase purchase = customer.Checkout(cart);
 
 > - DDD is all about constant re-factoring and maturing your model as you get further requirements. More requirements your receive the better and stronger your domain will be. Therefore requirements are gold and something that software engineers should always strive to understand.
 
-- 领域驱动设计涉及不断重构, 以及随着添加越来越多的需求让模型更加成熟. 当添加的需求越多, 模型就将越健壮. 因此, 需求是黄金, 开发者应该始终努力理解这些需求.
+- 领域驱动设计是关于随着获得越来越多的需求, 而不断重构和让模型更加成熟. 当添加的需求越多, 领域就将越健壮. 因此, 需求是黄金, 开发者应该始终努力理解这些需求.
 
 ## 9. 一些有用链接 (Useful links)
 
@@ -373,5 +373,7 @@ Purchase purchase = customer.Checkout(cart);
 ## 脚注
 
 [<a name="1">1</a>] 作者是在 2013 年 09 月开始写下这一系列文章的.
+
 [2] 横向扩展, 又叫水平扩展, 用更多的节点支撑更大量的请求.
+
 [3] 纵向扩展, 又叫垂直扩展, 扩展一个点的能力支撑更大的请求.
