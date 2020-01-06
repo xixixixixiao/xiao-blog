@@ -6,7 +6,7 @@
 
 > Over the coming weeks I will be posting series of articles on the subject, it will be my attempt to make domain-driven design simpler and easier follow. Articles that are published:
 
-接下来的几周<sup><a name="#1">1</a></sup> 我将会发表关于这个主题 (领域驱动设计) 的系列文章, 我将尝试让领域驱动设计更简单和更容易理解. 这系列的文章在这里:
+接下来的几周¹我将会发表关于这个主题 (领域驱动设计) 的系列文章, 我将尝试让领域驱动设计更简单和更容易理解. 这系列的文章在这里:
 
 - [应用领域驱动设计, 第〇章 - 需求和建模](applied-domain-driven-design-ddd-part-0.md)
 - [应用领域驱动设计, 第一章 - 基础](applied-domain-driven-design-ddd-part-1.md)
@@ -21,7 +21,7 @@
 
 ![领域驱动设计架构 (Domain Driven Design Architecture)](./images/applied-domain-driven-design-ddd-part-1/DDD_png_pure.png)
 
-*领域驱动设计架构 (这看起来比较简单) [Domain Driven Design Architecture (it's simpler then it looks)]*
+**领域驱动设计架构 (这看起来比较简单) [Domain Driven Design Architecture (it's simpler then it looks)]*
 
 ## 1. 在开始之前, 让我们先看看领域驱动设计为何如此出色 (Before we get started let's see why DDD is so great)
 
@@ -39,7 +39,7 @@
 
 > - **Unit tests** are easy to write as code scales horizontally and not vertically, making your methods thin and easily testable
 
-- **单元测试** 更加容易编写. 因为代码是横向扩展<sup>2</sup>, 而非纵向扩展<sup>3</sup>; 从而让你的方法轻薄且易于测试.
+- **单元测试** 更加容易编写. 因为代码是横向扩展², 而非纵向扩展³; 从而让你的方法轻薄且易于测试.
 
 > - **DDD** is a set of Patterns and Principles, this gives developers a framework to work with, allowing everyone in the development team to head in the same direction
 
@@ -370,10 +370,108 @@ Purchase purchase = customer.Checkout(cart);
 
 **注意: 本文中的代码尚未准备好投入生产, 仅用于原型设计. 如果有建议和反馈, 请发表评论.*
 
+## 10. 精选评论⁴
+
+*本系列译文将挑选原文中具有代表意义的评论及作者回答, 并仅带的译文, 若想阅读全部评论请导航到原文*.
+
+1. *bmoc* 14 August 2014 at 23:54
+
+    1. **评论**
+
+        非常好的文章! 我们正在尝试使用领域驱动设计, 但是在架构上我还是有些不太确定的地方. 如果你能解答我的疑惑, 我会十分高兴😀.
+
+        您是否能解释下 `领域驱动设计` 的依赖关系 (什么层依赖于什么层) 吗?
+
+        当我从上往下阅读时, 我认为高层依赖于低层, 反过来则不是. 基础设施层则是个例外 - 它使用了领域层, 但是领域层不知道基础设施层.
+
+        我能理解这些:
+
+        1. 表示层, 使用或依赖于分布式接口层或应用层.
+        2. 应用层使用了:
+            1. 领域层(但是领域层对应用层一无所知).
+            2. 基础设施层(基础设施层不知道应用层).
+        3. 基础设施层使用了:
+            1. 领域层
+            2. 数据访问服务和外部服务
+
+        我理解的对吗?
+
+        你会把数据传输对象 (DTO) 放在什么地方? 应用层? 基础设施层? 还是都有?
+
+        应用层的 DTO: 出于很多原因, 我不想把我的领域模型直接暴露给表示层, 所以在应用层创建 DTO, 并在应用层将领域对象转换成 DTO.
+
+    2. **回答**
+
+        感谢你的评论!
+
+        1和2的回答: 是.
+
+        3, 这是个很好的问题, 我想这里有几个问题.
+
+        让我们先从基础设施层开始. 你得 "领域模型层" 甚至不应该知道 "基础设施层". 可通过把数据持久化和任何其它基础设施层的接口放在 "领域模型层" 来实现这一点. 存储卡的实际实现位于基础设施层.
+
+        Your infrastructure layer will need to reference "Domain Model Layer" so that Infrastructure knows what entities / objects it's dealing with.
+
+        You don't need to have DTOs in the infrastructure layer. It's unnecessary complexity. For a view or something that is not part of a domain you could create a "value object". Please see [express state & computation with value objects](http://domainlanguage.com/ddd/patterns/DDD-Pattern-Language-Overview-sml.png).
+
+        Data Transfer Objects i.e. DTOs are fantastic because they don't contain any logic or methods they just carry data. Also if you use an ORM like nHibernate you will notice that it uses reflection to add extra behavior to the object. Last thing you want to do is send an entity with state tracking and methods with logic to the presentation layer. This is why they are so awesome (you have mentioned this above as well).
+
+        So, if you want clean separation I would query the data persistence, get back the entity or value object and map it on to a DTO via AutoMapper. Personally I would always do this even for a simple view query, this will keep everything consistent.
+
+        For some code samples please see: [GitHub](https://github.com/zkavtaskin/Domain-Driven-Design-Example)
+
+        I hope this helps!
+
+2. *soeng kanel* 2 August 2016 at 17:17
+
+    1. **评论**
+
+        Great post.
+
+        Could you explain why Development becomes domain oriented not UI/Database oriented ? why not Database orianted?
+
+    2. **回答**
+
+        Thank you for the comment!
+
+        Domain-driven design makes your development more domain oriented and technology agnostic due to abstraction. Take a look at the [onion architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/).
+
+        Some “classic” applications are very database oriented. For example some of these apps are all about stored procedures. To make things simpler, people just project stored procedure data output directly onto the UI. Overtime this creates maintenance nightmare as these stored procedures often get used by other stored procedures and they start to contain more and more business logic as business processes mature. Your user interface gets intertwined with database, database gets intertwined with business logic. Things become extremely hard to change and understand. No one understands where business process begins and ends.
+
+        N-tier architecture removes this confusing business logic and UI intertwining. Domain-driven design dramatically improves maintainability through very good use of object-oriented programming and abstraction from infrastructure concerns.
+
+        I hope this answer your question, once again thank you for reading.
+
+3. *Alexander Kolev* 30 November 2017 at 09:31
+
+    1. **评论**
+
+        Great post. I have a question though - why would you use Create factory methods to create new instances instead of plain old constructors?
+
+        In this case we will have
+
+        ```csharp
+        Cart cart = new Cart(new List() { new Product(), new Product() });
+        Customer customer = new Customer("josh", "smith", "josh.smith@microsoft.com");
+        Purchase purchase = customer.Checkout(cart);
+        ```
+
+    2. **回答**
+
+        Hello Alexander,
+
+        It's partially preference, there are two reasons for this:
+
+        1. If constructor is used to create a cart, and constructor raises domain events then what should domain event be called? CartCreating or CartCreated? Technically Cart is not created until constructor has finished constructing the cart.
+
+        2. Constructors should be light and should just create the objects, even though domain event is a decoupled pub/sub pattern it's still synchronous and I really don't like the idea of my constructor executing some handles that are sending emails, auditing, etc.
+
 ## 脚注
 
-[<a name="1">1</a>] 作者是在 2013 年 09 月开始写下这一系列文章的.
+[1] 作者是在 2013 年 09 月开始写下这一系列文章的.
 
 [2] 横向扩展, 又叫水平扩展, 用更多的节点支撑更大量的请求.
 
 [3] 纵向扩展, 又叫垂直扩展, 扩展一个点的能力支撑更大的请求.
+
+[4] 限于译者水平及时间, 评论翻译未作校对, 若有疑问请参考原文链接.
