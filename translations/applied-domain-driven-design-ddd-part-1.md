@@ -2,11 +2,11 @@
 
 > When I started learning domain-driven design there was a lot of theory to take in, Eric Evans did a great job explaining it from theoretical point of view. As a software engineer I wanted to see some code and just to follow some examples, I found very little resource out there that showed applied domain-driven design in C#.
 
-当我开始学习领域驱动设计时, 有大量的理论需要吸收, Eric Evans 从理论的视角做了非常好的解释. 作为一个软件开发者我想查看一些代码和效仿一些示例, 但是仅找到很少资源用 C# 去展示领域驱动设计的应用.
+当我开始学习领域驱动设计时, 有大量的理论需要吸收理解, Eric Evans 从理论的视角做了非常好的解释. 作为一个软件开发者我想查看一些代码和效仿一些示例, 但是, 我却发现很少有资源用 C# 去展示领域驱动设计的应用.
 
 > Over the coming weeks I will be posting series of articles on the subject, it will be my attempt to make domain-driven design simpler and easier follow. Articles that are published:
 
-接下来的几周 (作者是在 2013 年 09 月写下这一系列文章的) 我将会发表关于这个主题的一系列文章, 我将尝试让领域驱动设计更简单和更容易理解. 这系列的文章在这里:
+接下来的几周<sup><a name="#1">1</a></sup> 我将会发表关于这个主题 (领域驱动设计) 的系列文章, 我将尝试让领域驱动设计更简单和更容易理解. 这系列的文章在这里:
 
 - [应用领域驱动设计, 第〇章 - 需求和建模](applied-domain-driven-design-ddd-part-0.md)
 - [应用领域驱动设计, 第一章 - 基础](applied-domain-driven-design-ddd-part-1.md)
@@ -23,33 +23,33 @@
 
 *领域驱动设计架构 (这看起来比较简单) [Domain Driven Design Architecture (it's simpler then it looks)]*
 
-## 1. 在开始之前让我们看看为什么领域驱动设计如此出色 (Before we get started let's see why DDD is so great)
+## 1. 在开始之前, 让我们先看看领域驱动设计为何如此出色 (Before we get started let's see why DDD is so great)
 
 > - **Development** becomes domain oriented not UI/Database oriented
 
-- **开发** 转变向面向领域而非面向 UI 或数据库开发.
+- **开发** 转向面对领域而非面对 UI 或数据库开发.
 
 > - **Domain layer** captures all of the business logic, making your service layer very thin i.e. just a gateway in to your domain via DTO's
 
-- **领域层** 捕获了所有的业务逻辑, 让你的服务层十分轻薄精简, 即只是领域的一个网关, 仅仅让数据传输对象 (DTO) 通过.
+- **领域层** 捕获了所有的业务逻辑, 让服务层十分精简轻薄; 服务层只是领域的网关, 仅通过数据传输对象 (DTO).
 
 > - **Domain oriented development** allows you to implement true service-oriented architecture i.e. making your services reusable as they are not UI/Presentation layer specific
 
-- **面向领域的开发** 让你实现真正的面向服务架构, 即让你的服务可重用化; 因为它们不是特定于 UI 或表示层.
+- **面向领域的开发** 让你实现真正的面向服务架构, 即让你的服务可重用化; 因为服务不特定于 UI 或表示层.
 
 > - **Unit tests** are easy to write as code scales horizontally and not vertically, making your methods thin and easily testable
 
-- **单元测试** 更容易编写. 因为代码是水平扩展, 而非垂直扩展. 让你的方法轻薄且易于测试.
+- **单元测试** 更加容易编写. 因为代码是横向扩展<sup>2</sup>, 而非纵向扩展<sup>3</sup>; 从而让你的方法轻薄且易于测试.
 
 > - **DDD** is a set of Patterns and Principles, this gives developers a framework to work with, allowing everyone in the development team to head in the same direction
 
-- **领域驱动设计** 一组模式和原则, 为开发者提供了一套可用框架, 使开发团队的每一位开发者向着共同的方向前进.
+- **领域驱动设计** 是一组模式和原则, 它为开发者提供了一套可用的框架, 使团队中的每位开发者都朝着共同的方向前进.
 
 > Through this series of articles I will be focusing on a simple and made up e-commerce domain.
 
 通过这个系列的文章, 我会重点介绍一个简单且虚构的电子商城领域.
 
-## 2. 让我们来瞧一些代码 (So, let's see some code)
+## 2. 那, 让我们来瞧一些代码 (So, let's see some code)
 
 ```csharp
 public class Product
@@ -369,3 +369,9 @@ Purchase purchase = customer.Checkout(cart);
 > **Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.*
 
 **注意: 本文中的代码尚未准备好投入生产, 仅用于原型设计. 如果有建议和反馈, 请发表评论.*
+
+## 脚注
+
+[<a name="1">1</a>] 作者是在 2013 年 09 月开始写下这一系列文章的.
+[2] 横向扩展, 又叫水平扩展, 用更多的节点支撑更大量的请求.
+[3] 纵向扩展, 又叫垂直扩展, 扩展一个点的能力支撑更大的请求.
