@@ -4,7 +4,7 @@
 
 > About a year ago I have written a series of articles about Domain-driven design, you can find the [main article here](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html). Looking back I've realised that I've committed the most typical mistake and started to code my business domain without requirements or any draft designs!
 
-大约在一年前 (本文作者写于 2014 年 12 月), 我写过一系列有关领域驱动设计的文章 (这个系列将陆续翻译出), 你可以在这里找到它的[开篇章节](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html). 回顾过去, 我意识到自己犯了最典型的错误, 最开始, 在没有需求设计和任何设计草案的情况下, 就对我的业务领域开始写代码了!
+大约在一年前¹, 我写过一系列有关领域驱动设计的文章², 你可以在这里找到它的[开篇章节](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html). 回顾过去, 我意识到自己犯了最典型的错误, 最开始, 在没有需求设计和任何设计草案的情况下, 就对我的业务领域开始写代码了!
 
 ## 1. 为此, 我打算尝试修复这个问题, 以下是我准备要做的 (I am going to try and fix this, this is what I am going to do)
 
@@ -104,7 +104,7 @@
 
 ![(Figure 1) Object Interaction Diagram ](./images/applied-domain-driven-design-ddd-part-0/Object-Interaction-Diagram.jpeg)
 
-*图一: 对象交互图*
+**图一: 对象交互图*
 
 > Once we have object interaction diagram we can start thinking about object responsibilities. One of the most common mistakes is to push responsibilities on to the actor object i.e. Customer. We need to remember that objects must take care of themselves and objects need to be closed for direct communication and that you need go through the functions to communicate with them.
 
@@ -116,7 +116,7 @@
 
 ![(Figure 2) Object Responsibilities Diagram](./images/applied-domain-driven-design-ddd-part-0/Object-Responsibilities-Diagram.jpeg)
 
-*图二 对象职责图*
+**图二 对象职责图*
 
 > Now that we have object interaction and responsibilities diagram in place we can start thinking about lower level UML class diagram:
 
@@ -124,7 +124,7 @@
 
 ![(Figure 3) UML Diagram](./images/applied-domain-driven-design-ddd-part-0/UML-Diagram.jpeg)
 
-*图三* UML 类图
+**图三 UML 类图*
 
 > Figure 3 shows methods, class names, dependencies, interfaces and composition. I've took a bit of time and reflected only on the most complex / interesting parts of the model. I will worry about attributes and other details later on, detail will naturally emerge when I start coding. Figure 3 is suppose to be a rough sketch, that is all, teams can whiteboard Figure 3 during a meeting, take a picture and distribute it to everyone in the team and get on with the actual coding. After a week or so picture will be forgotten and the parts of the above model (that have been useful) will live and breath in the actual code.
 
@@ -138,7 +138,7 @@
 
 > - Don't start doing anything until you have requirements, if you don't have a BA in the company that's fine, you will have to do BA's job and identify requirements first.
 
-- 在有需求之前, 不要开始做任何事. 如果你在公司不是 BA (Business Analyst) 也没关系, 你先做好 BA 的工作, 再明确需求.
+- 在有需求之前, 不要开始做任何事. 如果你在公司不是 BA³ 也没关系, 你先做好 BA 的工作, 再明确需求.
 
 > - Don't just jump in to the code soon as you have requirements, put together object interaction and responsibilities diagrams first.
 
@@ -161,6 +161,10 @@
 - [类的关系 (Class Relationships)](https://www.youtube.com/watch?v=YgiePdx115w)
 - [类的职责 (Class Responsibilities)](https://www.youtube.com/watch?v=qsHgCoJqU0A)
 
-## 7. 备注
+## 7. 脚注
 
-    [1] BA, 业务分析师. 在 IT 公司里, BA 的角色就是PM (产品经理), 叫 BA 是因为这类 PM 要承接某个很具体的业务或者领域.
+[1] 本文作者写于 2014 年 12 月.
+
+[2] 此系列将陆续译出.
+
+[3] BA, Business Analyst, 业务分析师. 在 IT 公司里, BA 的角色就是PM (产品经理), 叫 BA 是因为这类 PM 要承接某个很具体的业务或者领域.
