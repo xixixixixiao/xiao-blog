@@ -378,7 +378,7 @@ Purchase purchase = customer.Checkout(cart);
 
     1. **评论**
 
-        非常好的文章! 我们正在尝试使用领域驱动设计, 但是在架构上我还是有些不太确定的地方. 如果你能解答我的疑惑, 我会十分高兴😀.
+        非常好的文章! 我们正在尝试使用领域驱动设计, 但是在架构上我还是有些不太确定的地方. 如果你能解答我的疑惑, 我会十分高兴 :).
 
         您是否能解释下 `领域驱动设计` 的依赖关系 (什么层依赖于什么层) 吗?
 
@@ -410,17 +410,17 @@ Purchase purchase = customer.Checkout(cart);
 
         让我们先从基础设施层开始. 你的 "领域模型层" 甚至不应该知道 "基础设施层". 可通过把数据持久化和任何其它基础设施层的接口放在 "领域模型层" 来实现这一点. 仓储的真实实现位于基础设施层.
 
-        Your infrastructure layer will need to reference "Domain Model Layer" so that Infrastructure knows what entities / objects it's dealing with.
+        你的基础设施层需要引用 "领域模型层" 以便于基础设施层知道它要处理的实体 / 对象.
 
-        You don't need to have DTOs in the infrastructure layer. It's unnecessary complexity. For a view or something that is not part of a domain you could create a "value object". Please see [express state & computation with value objects](http://domainlanguage.com/ddd/patterns/DDD-Pattern-Language-Overview-sml.png).
+        你无需在基础设施层中具有数据传输对象, 它增加了不必要的复杂性. 对于视图或者不属于领域的内容, 可以创建 "值对象", 请参考 [使用值对象表示状态和计算](./images/applied-domain-driven-design-ddd-part-1/Pattern-Language-Overview-med.png).
 
-        Data Transfer Objects i.e. DTOs are fantastic because they don't contain any logic or methods they just carry data. Also if you use an ORM like nHibernate you will notice that it uses reflection to add extra behavior to the object. Last thing you want to do is send an entity with state tracking and methods with logic to the presentation layer. This is why they are so awesome (you have mentioned this above as well).
+        数据传输对象之所以出色, 因为它们不包含任何逻辑或方法, 它们仅仅携带数据. 另外, 如果使用类似于 NHibernate 这样的 ORM 框架, 你会注意到它会使用反射向对象添加额外的行为. 最后要做的是将一个具有状态跟踪的实体和具有逻辑的方法发送到表示层, 这就是为什么它们为什么如此出色的原因(你也提到了这一点).
 
-        So, if you want clean separation I would query the data persistence, get back the entity or value object and map it on to a DTO via AutoMapper. Personally I would always do this even for a simple view query, this will keep everything consistent.
+        因此, 如果你想要彻底的分离, 可以查询持久化数据, 获取实体或值对象, 并通过 AutoMapper 将其映射到 DTO. 即便是一个简单的视图查询, 我个人也是这么做的, 将使所有内容保持一致.
 
-        For some code samples please see: [GitHub](https://github.com/zkavtaskin/Domain-Driven-Design-Example)
+        相关的一些代码示例, 请参考: [GitHub](https://github.com/zkavtaskin/Domain-Driven-Design-Example)
 
-        I hope this helps!
+        我希望这个回答对你有帮助.
 
 2. *soeng kanel* 2 August 2016 at 17:17
 
@@ -432,23 +432,23 @@ Purchase purchase = customer.Checkout(cart);
 
     2. **回答**
 
-        Thank you for the comment!
+        感谢你的评论!
 
-        Domain-driven design makes your development more domain oriented and technology agnostic due to abstraction. Take a look at the [onion architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/).
+        领域驱动设计让你的开发由于抽象, 所以更加面上领域且与技术无关. 看看 [洋葱模型](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/).
 
-        Some “classic” applications are very database oriented. For example some of these apps are all about stored procedures. To make things simpler, people just project stored procedure data output directly onto the UI. Overtime this creates maintenance nightmare as these stored procedures often get used by other stored procedures and they start to contain more and more business logic as business processes mature. Your user interface gets intertwined with database, database gets intertwined with business logic. Things become extremely hard to change and understand. No one understands where business process begins and ends.
+        一些 "经典" 的应用程序非常面向数据, 例如一些应用程序都涉及存储过程, 为了简单起见, 开发者们仅仅只是将存储过程的数据输出直接映射到 UI, 由于这些存储过程常常被其它的存储过程使用, 并随着业务流程的成熟, 开始包含越来越多的业务逻辑, 随着时间的推移, 这将造成维护的噩梦. 用户界面与数据库缠绕在一起, 数据库与业务逻辑缠绕在一起. 事情变得及其难以改变和理解, 没有人知道业务流程从哪里开始, 也没有人知道在哪里结束.
 
-        N-tier architecture removes this confusing business logic and UI intertwining. Domain-driven design dramatically improves maintainability through very good use of object-oriented programming and abstraction from infrastructure concerns.
+        N 层架构消除了这种令人困惑的业务逻辑和 UI 交织. 领域驱动设计通过善用面向对象编程和抽象基础设施层, 显著地改善了可维护性.
 
-        I hope this answer your question, once again thank you for reading.
+        我希望这个能回答你的疑问, 再次感谢你阅读此文.
 
 3. *Alexander Kolev* 30 November 2017 at 09:31
 
     1. **评论**
 
-        Great post. I have a question though - why would you use Create factory methods to create new instances instead of plain old constructors?
+        很好的文章. 不过我有个疑问: 什么您使用创建工厂方法创建新实例而不是使用传统的构造函数?
 
-        In this case we will have
+        在这种情况下我们会有
 
         ```csharp
         Cart cart = new Cart(new List() { new Product(), new Product() });
@@ -458,13 +458,13 @@ Purchase purchase = customer.Checkout(cart);
 
     2. **回答**
 
-        Hello Alexander,
+        你好, Alexander,
 
-        It's partially preference, there are two reasons for this:
+        这有一半是偏好, 这么做有两个原因:
 
-        1. If constructor is used to create a cart, and constructor raises domain events then what should domain event be called? CartCreating or CartCreated? Technically Cart is not created until constructor has finished constructing the cart.
+        1. 如果使用构造方法创建一个购物车实例, 并且触发领域事件; 那么哪个领域事件应该被调用, `CartCreating` 还是 `CartCreated`? 从技术角度而言, 如果构造器没有完成构造购物车, 那么购物车是不会被创建的.
 
-        2. Constructors should be light and should just create the objects, even though domain event is a decoupled pub/sub pattern it's still synchronous and I really don't like the idea of my constructor executing some handles that are sending emails, auditing, etc.
+        2. 构造方法应该是轻量的, 只应该创建对象; 即使领域事件是发布/订阅解耦的模式, 它仍然是同步的. 我是真心不喜欢在构造函数执行处理一些发送电子邮件, 审计操作等等.
 
 ## 脚注
 
