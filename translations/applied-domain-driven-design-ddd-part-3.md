@@ -1,4 +1,6 @@
-# Applied Domain-Driven Design (DDD), Part 3 - Specification Pattern
+# 应用领域驱动设计, 第三章 - 规范模式 Applied Domain-Driven Design (DDD), Part 3 - Specification Pattern
+
+原文: [Applied Domain-Driven Design (DDD), Part 3 - Specification Pattern](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
 
 > Specification pattern is great, David Fancher wrote a great piece on it, i suggest you read it before you continue.
 

@@ -1,4 +1,4 @@
-# 应用领域驱动设计, 第〇章 - 需求和建模 (Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling)
+# 应用领域驱动设计, 第〇章 - 需求和建模 Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling
 
 原文: [Applied Domain-Driven Design (DDD), Part 0 - Requirements and Modelling](http://www.zankavtaskin.com/2014/12/applied-domain-driven-design-ddd-part-0.html)
 
@@ -163,7 +163,7 @@
 
 ## 7. 脚注
 
-[1] 本文作者写于 2014 年 12 月.
+[1] 本文作者写于 2014 年 12 月 01 日.
 
 [2] 此系列将陆续译出.
 

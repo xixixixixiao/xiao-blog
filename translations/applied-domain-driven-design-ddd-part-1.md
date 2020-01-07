@@ -1,5 +1,7 @@
 # 应用领域驱动设计, 第一章 - 基础 Applied Domain-Driven Design (DDD), Part 1 - Basics
 
+原文: [Applied Domain-Driven Design (DDD), Part 1 - Basics](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-1.html)
+
 > When I started learning domain-driven design there was a lot of theory to take in, Eric Evans did a great job explaining it from theoretical point of view. As a software engineer I wanted to see some code and just to follow some examples, I found very little resource out there that showed applied domain-driven design in C#.
 
 当我开始学习领域驱动设计时, 有大量的理论需要吸收理解, Eric Evans 从理论的视角做了非常好的解释. 作为一个软件开发者我想查看一些代码和效仿一些示例, 但是, 我却发现很少有资源用 C# 去展示领域驱动设计的应用.
@@ -10,8 +12,8 @@
 
 - [应用领域驱动设计, 第〇章 - 需求和建模](applied-domain-driven-design-ddd-part-0.md)
 - [应用领域驱动设计, 第一章 - 基础](applied-domain-driven-design-ddd-part-1.md)
-- [应用领域驱动设计, 第二章 - Domain events](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
-- [应用领域驱动设计, 第三章 - Specification Pattern](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
+- [应用领域驱动设计, 第二章 - 领域事件](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
+- [应用领域驱动设计, 第三章 - 规范模式](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
 - [应用领域驱动设计, 第四章 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
 - [应用领域驱动设计, 第五章 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
 - [应用领域驱动设计, 第六章 - Application Services](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
@@ -468,7 +470,7 @@ Purchase purchase = customer.Checkout(cart);
 
 ## 脚注
 
-[1] 作者是在 2013 年 09 月开始写下这一系列文章的.
+[1] 作者是在 2013 年 09 月 26 日开始写下这一系列文章的.
 
 [2] 横向扩展, 又叫水平扩展, 用更多的节点支撑更大量的请求.
 

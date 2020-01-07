@@ -1,4 +1,6 @@
-# Applied Domain-Driven Design (DDD), Part 2 - Domain Events
+# 应用领域驱动设计, 第二章 - 领域事件 Applied Domain-Driven Design (DDD), Part 2 - Domain Events
+
+原文: [Applied Domain-Driven Design (DDD), Part 2 - Domain Events](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
 
 > In my last post we have addressed DDD thought process and constant refining/re-factoring. In this post we are going to talk about domain events. There are many articles on this out there (see references at the bottom), so i will be brief.
 

@@ -2,11 +2,11 @@
 
 > [Did you know that planning is already underway for the ninth version of the C# language?](https://github.com/dotnet/csharplang/milestone/15)
 
-[第九版 C# 语言已经在开发中了, 你晓得伐?](https://github.com/dotnet/csharplang/milestone/15)
+[第九版 C# 语言已经在开发中了, 你晓得吗?](https://github.com/dotnet/csharplang/milestone/15)
 
 > Now, to be fair, this has been in the planning phases long, **LONG**, before C# 8 shipped to us back in September 2019, as you can see from some of the discussion on the issues themselves. Most folks don’t follow the day-to-day planning of the language itself (myself included), but it’s interesting to peer into the discussions every now and then.
 
-现在, 公平地讲, 在 C# 8 于2019年9月交付给开发者之前, 这个已经在计划阶段 **很久很久很久** 了. 可以从一些关于 C# 9 的 issues 的讨论中看到. 大多数人不太会遵循语言本身的日常规划(连我自己都是), 但时不时地参与下讨论还是蛮有意思.
+现在, 公平地讲, 在 C# 8 于 2019 年 9 月交付给开发者之前, 这个已经在计划阶段 **很久很久很久** 了. 可以从一些关于 C# 9 的 issues 的讨论中看到. 大多数人不太会遵循语言本身的日常规划(连我自己都是), 但时不时地参与下讨论还是蛮有意思.
 
 > And, since this is Christmas Day, let’s peek in on five (there are a LOT more!) C# 9 language “gifts” we might receive sometime in 2020 (subject to change, of course!)
 
@@ -77,7 +77,7 @@ class Person
         get => _firstName;
         set {
           if (value == null) {
-              throw new NullArgumentException(nameof(FirstName)); 
+              throw new NullArgumentException(nameof(FirstName));
           }
           _firstName = value;
         }
@@ -171,7 +171,7 @@ enum class Shape
 
 > Since I’m the final post of the year, I’d like to offer a major thank you to everyone that volunteered, wrote, tweeted, retweeted, liked, hearted, shared, read, etc., to this amazing event.
 
-由于这是我今年最后一篇博文, 因此我要向在这项令人赞叹的活动中自干五的人致以深深的感谢.
+由于这是我今年最后一篇博文; 因此我要向在这项不可思议的活动中那些自愿, 写作, 发推, 转发, 分享, 阅读的热心人致以深深的感谢.
 
 > This community…OUR community, is comprised of amazing folks, and I consider myself grateful to even be considered a part of it.
 
@@ -179,7 +179,7 @@ enum class Shape
 
 > Whatever holiday you celebrate this time of year, I hope it’s wonderful.
 
-不管每年的这个圣诞节庆祝什么, 我都希望它是棒棒哒.
+无论你在每年的这个时候庆祝什么, 我都希望它是棒棒哒.
 
 > See you next year, friends.
 

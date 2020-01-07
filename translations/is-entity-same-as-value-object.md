@@ -64,7 +64,7 @@ public abstract class Entity : ValueObject
 
 ![Identifier equality](./images/is-entity-same-as-value-object/identifier-equality.png)
 
-*Identifier equality (标识符的相等)*
+**Identifier equality (标识符的相等)*
 
 > Value objects are compared by their content. Two value objects are deemed the same if their contents match:
 
@@ -72,7 +72,7 @@ public abstract class Entity : ValueObject
 
 ![Identifier equality](./images/is-entity-same-as-value-object/structural-equality.png)
 
-*Structural equality (结构的相等)*
+**Structural equality (结构的相等)*
 
 > Note that although you usually compare value objects by **all** of their contents, it doesn’t have to always be the case. Some fields might not matter for identity comparison.
 
