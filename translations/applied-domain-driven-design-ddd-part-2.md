@@ -4,9 +4,13 @@
 
 > In my last post we have addressed DDD thought process and constant refining/re-factoring. In this post we are going to talk about domain events. There are many articles on this out there (see references at the bottom), so i will be brief.
 
+在我的上一篇文章中, 我们讨论了领域驱动设计的思考和不断完善/重构的过程. 在这篇文中, 我们将讨论领域事件. 参考本文末, 有许多关于领域事件的文章, 所有我将做简单的介绍.
+
 > When something has happened in the domain, domain event can be raised. It can be from a trivial property change to an overall object state change. This is a fantastic way to describe an actual event in your domain, i.e. customer has checked out, customer was created, etc.
 
-## Let's extend our previous e-commerce example
+当领域中的某些事情发生时, 领域事件可以被引发. 它可以是从小到属性的改变, 大到整个对象的状态改变. 在领域中, 这是一种描述真实事件发生的最佳方式, 即, 客户已经结账, 客户被创建等等.
+
+## 让我们扩展之前的电商示例 (Let's extend our previous e-commerce example)
 
 ```csharp
 public class Product
