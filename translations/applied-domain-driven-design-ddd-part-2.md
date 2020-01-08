@@ -135,6 +135,7 @@ public class CustomerCheckedOutHandle : Handles CustomerCheckedOut
     {
         this.emailSender.Send(args.Purchase.Customer, EmailTemplate.PurchaseMade);
         //send notifications, update third party systems, etc
+        // 发送通知, 更新第三方系统, 等等.
     }
 }
 
@@ -152,7 +153,11 @@ public enum EmailTemplate
 
 > It can be confusing, what do you put in to Customer.Checkout(...) method and what do you put in to the handler?
 
+这可能会令开发者迷惑, 这到底往 `Customer.Checkout(…)` 方法里放入了什么, 以及会向处理程序传递了什么?
+
 > In my opinion Customer.Checkout(...) method should do what it needs to do with the access to the properties/fields that it has access to. So creating a purchase object and adding it to the collection, incrementing purchase count on the customer, updating last purchase date on the customer object, you get the idea.
+
+在我看来, `Customer.Checkout(...)` 方法应该是他对需要访问的属性/字段进行访问, 所以创建一个交易对象并添加到集合中, 增加客户对象的交易的计数, 更新客户对象的交易的日期, 你就知道了.
 
 > What does handler have access to? All of the infrastructure layer interfaces. This makes it a great place to send out emails and notifications, synchronize with third party services, create audit records, etc.
 
