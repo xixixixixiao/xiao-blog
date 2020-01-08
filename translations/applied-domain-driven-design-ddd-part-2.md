@@ -112,7 +112,9 @@ public class CustomerCheckedOutHandle : Handles CustomerCheckedout
 
 > For example in our case, when customer calls Customer.Checkout(...) we raise "CustomerCheckedOut" event. When event is handled it should not change the purchase object state, it should facilitate additional behavior only. For example sending out an email, updating financial monthly balance sheet, calling third party API, etc.
 
-## This is how you could use it
+在我们的这个例子中, 当客户调用了 `Customer.Checkout(...)` 时, 会引发 `CustomerCheckedOut` 事件. 当事件被处理时, 它不应该改变交易对象的状态, 它仅仅只应该引导附加的行为. 比如发送邮件, 更新金额月度剩余表, 调用第三方 API, 等等.
+
+## 下面代码演示了应该如何使用领域事件 (This is how you could use it)
 
 ```csharp
 public class CustomerCheckedOut : IDomainEvent
@@ -154,15 +156,25 @@ public enum EmailTemplate
 
 > What does handler have access to? All of the infrastructure layer interfaces. This makes it a great place to send out emails and notifications, synchronize with third party services, create audit records, etc.
 
-## Summary
+## 总结 (Summary)
 
 > - Domain event handlers should not change the state of the object that caused domain event to be triggered.
+
+领域事件处理程序不应该改变对象的状态, 因为领域事件是被触发的.
+
 > - Domain events should be raised inside the domain.
+
+领域事件应该由领域内部引发.
+
 > - Domain events handlers should be looked at as a side effect / chain reaction facilitator.
 
-## Useful links
+领域事件处理程序应该被视为副作用或者连锁反应的引导者.
+
+## 一些有用的链接 (Useful links)
 
 1. [Domain Events - Salvation](http://www.udidahan.com/2009/06/14/domain-events-salvation/)
 2. [Strengthening your domain - domain events](http://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/)
 
 > *Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
+
+**注意: 本文中的代码尚未准备好投入生产, 仅用于原型设计. 如果有建议和反馈, 请发表评论.*
