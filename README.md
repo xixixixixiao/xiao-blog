@@ -14,9 +14,11 @@
 
   - 2020-01-07 [应用领域驱动设计, 第一章 - 基础](./translations/applied-domain-driven-design-ddd-part-1.md)
 
-  - 2020-01-07 [应用领域驱动设计, 第二章 - 领域事件](./translations/applied-domain-driven-design-ddd-part-2.md)
+  - 2020-01-09 [应用领域驱动设计, 第二章 - 领域事件](./translations/applied-domain-driven-design-ddd-part-2.md)
 
-  - 2020-01-07 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md) (翻译中)
+  - 2020-01-09 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md) (翻译中)
+
+  - 2020-01-09 [应用领域驱动设计, 第三章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md) (翻译中)
 
 ## BLOG
 
@@ -27,8 +29,6 @@
 - 2020-01-02 [Why You Should Do DDD](http://www.informit.com/articles/article.aspx?p=1944876&seqNum=2)
 
 - 2020-01-02 [Why I don't do Domain Driven Design](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
-
-- 2020-01-02 [Applied Domain-Driven Design (DDD), Part 4 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
 
 - 2020-01-02 [Applied Domain-Driven Design (DDD), Part 5 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
 
