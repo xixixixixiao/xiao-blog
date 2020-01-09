@@ -4,11 +4,11 @@
 
 > In my last post we have addressed DDD thought process and constant refining/re-factoring. In this post we are going to talk about domain events. There are many articles on this out there (see references at the bottom), so i will be brief.
 
-在我的上一篇文章中, 我们讨论了领域驱动设计的思考和不断完善/重构的过程. 在这篇文中, 我们将讨论领域事件. 参考本文末, 有许多关于领域事件的文章, 所有我将做简单的介绍.
+在我的上一篇文章中, 我们讨论了领域驱动设计的思考的过程和不断地完善/重构. 在这篇文章中, 我们将讨论领域事件. 参考本文末, 有许多关于领域事件的文章, 所以本文我将做简单的介绍.
 
 > When something has happened in the domain, domain event can be raised. It can be from a trivial property change to an overall object state change. This is a fantastic way to describe an actual event in your domain, i.e. customer has checked out, customer was created, etc.
 
-当领域中的某些事情发生时, 领域事件可以被引发. 它可以是从小到属性的改变, 大到整个对象的状态改变. 在领域中, 这是一种描述真实事件发生的最佳方式, 即, 客户已经结账, 客户被创建等等.
+当领域中发生 *某些事情* 时, 领域事件可以被引发. 它可以是从小到琐碎的属性的改变, 大到整体对象的状态改变. 在领域中, 这是一种描述真实事件发生的最佳方式, 即, *客户已经结账*, *客户被创建*等等.
 
 ## 让我们扩展之前的电商示例 (Let's extend our previous e-commerce example)
 
@@ -116,9 +116,9 @@ public class CustomerCheckedOutHandle : Handles CustomerCheckedout
 
 > For example in our case, when customer calls Customer.Checkout(...) we raise "CustomerCheckedOut" event. When event is handled it should not change the purchase object state, it should facilitate additional behavior only. For example sending out an email, updating financial monthly balance sheet, calling third party API, etc.
 
-在我们的这个例子中, 当客户调用了 `Customer.Checkout(...)` 时, 会引发 `CustomerCheckedOut` 事件. 当事件被处理时, 它不应该改变交易对象的状态, 它仅仅只应该引导附加的行为. 比如发送邮件, 更新金额月度剩余表, 调用第三方 API, 等等.
+例如, 在我们的这个例子中, 当客户调用了 `Customer.Checkout(...)` 时, 会引发 `CustomerCheckedOut` 事件. 当事件被处理时, 不应该改变交易对象的状态, 它仅仅只应该引导附加的行为. 比如发送邮件, 更新财务月度资金表, 调用第三方 API, 等等.
 
-## 下面代码演示了应该如何使用领域事件 (This is how you could use it)
+## 你可以通过下面的方式使用领域事件 (This is how you could use it)
 
 ```csharp
 public class CustomerCheckedOut : IDomainEvent
@@ -161,17 +161,17 @@ public enum EmailTemplate
 
 > In my opinion Customer.Checkout(...) method should do what it needs to do with the access to the properties/fields that it has access to. So creating a purchase object and adding it to the collection, incrementing purchase count on the customer, updating last purchase date on the customer object, you get the idea.
 
-在我看来, `Customer.Checkout(...)` 方法应该是他对需要访问的属性/字段进行访问, 所以创建一个交易对象并添加到集合中, 增加客户对象的交易的计数, 更新客户对象的交易的日期, 你就知道了.
+在我看来, `Customer.Checkout(...)` 方法应该是对需要访问的属性/字段进行访问, 所以创建一个交易对象并添加到集合中, 增加客户对象的交易的计数, 更新客户对象的上次交易的日期, 就可以了.
 
 > What does handler have access to? All of the infrastructure layer interfaces. This makes it a great place to send out emails and notifications, synchronize with third party services, create audit records, etc.
 
-事件处理程序可以访问些什么? 所有的基础设施层的接口. 它可以发送邮件和通知, 同步第三方服务, 创建审计记录, 等等.
+事件处理程序可以访问些哪些东西? 所有的基础设施层的接口. 这让它可以发送邮件和通知, 同步第三方服务, 创建审计记录, 等等.
 
 ## 总结 (Summary)
 
 > - Domain event handlers should not change the state of the object that caused domain event to be triggered.
 
-领域事件处理程序不应该改变对象的状态, 因为领域事件是被触发的.
+领域事件处理程序不应该改变导致领域事件触发的对象的状态.
 
 > - Domain events should be raised inside the domain.
 
@@ -183,8 +183,8 @@ public enum EmailTemplate
 
 ## 一些有用的链接 (Useful links)
 
-1. [Domain Events - Salvation](http://www.udidahan.com/2009/06/14/domain-events-salvation/)
-2. [Strengthening your domain - domain events](http://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/)
+1. [领域事件 - 救赎](http://www.udidahan.com/2009/06/14/domain-events-salvation/)
+2. [强化领域 - 领域事件](http://lostechies.com/jimmybogard/2010/04/08/strengthening-your-domain-domain-events/)
 
 > *Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
 
