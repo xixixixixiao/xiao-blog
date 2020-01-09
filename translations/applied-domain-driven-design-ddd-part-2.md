@@ -165,6 +165,8 @@ public enum EmailTemplate
 
 > What does handler have access to? All of the infrastructure layer interfaces. This makes it a great place to send out emails and notifications, synchronize with third party services, create audit records, etc.
 
+事件处理程序可以访问些什么? 所有的基础设施层的接口. 它可以发送邮件和通知, 同步第三方服务, 创建审计记录, 等等.
+
 ## 总结 (Summary)
 
 > - Domain event handlers should not change the state of the object that caused domain event to be triggered.
