@@ -6,14 +6,14 @@
 
 > In short, specification pattern allows you to chain business queries.
 
-## Example
+## 示例 (Example)
 
 ```csharp
 ISpecification<Customer> spec =
     new CustomerRegisteredInTheLastDays(30).And(new CustomerPurchasedNumOfProducts(2));
 ```
 
-## Entity from previous posts in this series
+## 此系列上文的实体 (Entity from previous posts in this series)
 
 ```csharp
 public class Customer : IDomainEntity
@@ -55,7 +55,7 @@ public class Customer : IDomainEntity
 }
 ```
 
-## Specification Examples
+## 规范示例 (Specification Examples)
 
 ```csharp
 public class CustomerRegisteredInTheLastDays : SpecificationBase<Customer>
@@ -97,7 +97,7 @@ public class CustomerPurchasedNumOfProducts : SpecificationBase<Customer>
 }
 ```
 
-## Abstract Repository Query Example
+## 抽象仓储查询示例 (Abstract Repository Query Example)
 
 ```csharp
 IRepository<Customer> customerRepository = new Repository<Customer>();
@@ -108,7 +108,7 @@ ISpecification<Customer> spec =
 IEnumerable<Customer> customers = customerRepository.Find(spec);
 ```
 
-## Abstract Repository Example
+## 抽象仓储示例 (Abstract Repository Example)
 
 ```csharp
 public interface IRepository<TEntity>
@@ -122,7 +122,7 @@ public interface IRepository<TEntity>
 }
 ```
 
-## Summary
+## 总结 (Summary)
 
 > - Specification allows you to query data in a abstract way i.e. you can query memory collections or an RDBMS. This ensures persistence/infrastructure ignorance.
 > - Specification encapsulates a business rule in one spec.
@@ -132,15 +132,17 @@ public interface IRepository<TEntity>
 > - Specifications are stored in the domain layer, this provides full visibility.
 > - Specifications are super elegant.
 
-## Tips
+## 小技巧 (Tips)
 
 > - Break complex business logic rules down in your specification as NHibernate might struggle to interpret them in to a SQL query. This is a generally good tip as you don't want messy SQL hitting your database.
 > - Query data around the entity properties, don't try and change the properties on the entity i.e. instead of writing customer.Created.AddDays(30) >= DateTime.Today write customer.Created >= DateTime.Today.AddDays(-30). The former will try and compile it as a SQL and will fail as it's too complex, the latter will convert the value to a parameter.
 > - As specifications are logical queries they should not change state of the caller or the calling objects. i.e. don't call state changing methods, such as customer.Checkout(....) && customer.Active == true. This tip goes hand in hand with the tip above.
 
-## Useful links
+## 一些有用的链接 (Useful links)
 
-> - [Specifications, Expression Trees, and NHibernate](http://davefancher.com/2012/07/03/specifications-expression-trees-and-nhibernate/)  a fantastic article with great examples on how to use spefifications with NHibernate.
-> - [Specification Pattern](http://en.wikipedia.org/wiki/Specification_pattern), basic explanation of boolean specification pattern.
+> - [规范, 表达式树, 以及 NHibernate](http://davefancher.com/2012/07/03/specifications-expression-trees-and-nhibernate/)  a fantastic article with great examples on how to use spefifications with NHibernate.
+> - [规范模式](http://en.wikipedia.org/wiki/Specification_pattern), basic explanation of boolean specification pattern.
 
 > *Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
+
+**注意: 本文中的代码尚未准备好投入生产, 仅用于原型设计. 如果有建议和反馈, 请发表评论.*

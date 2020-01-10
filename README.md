@@ -16,9 +16,9 @@
 
   - 2020-01-09 [应用领域驱动设计, 第二章 - 领域事件](./translations/applied-domain-driven-design-ddd-part-2.md)
 
-  - 2020-01-09 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md) (翻译中)
+  - 2020-01-09 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md)
 
-  - 2020-01-09 [应用领域驱动设计, 第三章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md) (翻译中)
+  - 2020-01-09 [应用领域驱动设计, 第四章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md)
 
 ## BLOG
 
@@ -26,16 +26,21 @@
 
 ## TODO
 
-- 2020-01-02 [Why You Should Do DDD](http://www.informit.com/articles/article.aspx?p=1944876&seqNum=2)
+- 2020-01-02 [为什么你应该使用领域驱动设计](http://www.informit.com/articles/article.aspx?p=1944876&seqNum=2)
 
-- 2020-01-02 [Why I don't do Domain Driven Design](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
+- 2020-01-02 [为什么我不使用领域驱动设计](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
 
-- 2020-01-02 [Applied Domain-Driven Design (DDD), Part 5 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+- Applied Domain-Driven Design
 
-- 2020-01-02 [Applied Domain-Driven Design (DDD), Part 6 - Application Services](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-6.html)
+  - 2020-01-02 [应用领域驱动设计, 第五章 - 领域服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+  - 2020-01-02 [应用领域驱动设计, 第六章 - 应用服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-6.html)
+  - 2020-01-02 [应用领域驱动设计, 第七章 - 读模式服务](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
+  - 2020-01-02 [应用领域驱动设计, 五个最佳实践](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
+  - 2020-01-02 [应用领域驱动设计, 事件日志 & 审计资源](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
 
-- 2020-01-02 [Applied Domain-Driven Design (DDD), Part 7 - Read Model Services](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
+- ASP.NET Core Authentication with JWT and Angular
 
-- 2020-01-02 [Applied Domain-Driven Design (DDD), My Top 5 Best Practices](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
+  - 2020-01-10 [ASP.NET Core 认证之 JWT 与 Angular – 第一章](https://code-maze.com/authentication-aspnetcore-jwt-1/)
+  - 2020-01-10 [ASP.NET Core 认证之 JWT 与 Angular – 第二章](https://code-maze.com/authentication-aspnetcore-jwt-2/)
 
-- 2020-01-02 [Applied Domain-Driven Design (DDD), Event Logging & Sourcing For Auditing](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
+- [Angular 开发最佳实践](https://code-maze.com/angular-best-practices/)
