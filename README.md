@@ -18,7 +18,17 @@
 
   - 2020-01-09 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md)
 
-  - 2020-01-09 [应用领域驱动设计, 第四章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md)
+  - 2020-01-09 [应用领域驱动设计, 第四章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md) (translating)
+
+  - 2020-01-29 [应用领域驱动设计, 第五章 - 领域服务](./translations/applied-domain-driven-design-ddd-part-5.md)
+
+  - 2020-01-29 [应用领域驱动设计, 第六章 - 应用服务](./translations/applied-domain-driven-design-ddd-part-6.md)
+
+  - 2020-01-29 [应用领域驱动设计, 第七章 - 读模式服务](./translations/applied-domain-driven-design-ddd-part-7.md)
+
+  - 2020-01-02 [应用领域驱动设计, 番外篇 - 五个最佳实践](./translations/Domain-Driven-Design-My-Top-Best-Practices.md)
+
+  - 2020-01-02 [应用领域驱动设计, 番外篇 - 事件日志 & 审计资源](./translations/applied-domain-driven-design-ddd-event.md)
 
 ## BLOG
 
@@ -32,9 +42,6 @@
 
 - Applied Domain-Driven Design
 
-  - 2020-01-02 [应用领域驱动设计, 第五章 - 领域服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
-  - 2020-01-02 [应用领域驱动设计, 第六章 - 应用服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-6.html)
-  - 2020-01-02 [应用领域驱动设计, 第七章 - 读模式服务](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
   - 2020-01-02 [应用领域驱动设计, 五个最佳实践](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
   - 2020-01-02 [应用领域驱动设计, 事件日志 & 审计资源](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
 
