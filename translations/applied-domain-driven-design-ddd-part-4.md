@@ -4,11 +4,11 @@
 
 > If you come from database centric development (where database is the heart of the application) then this is going to be hard for you. In domain-driven design database and general data sources are not important, your application is persistence ignorant.
 
-如果你之前都是以数据库为中心的开发模式 (数据库是应用程序的核心), 那么这篇文章将对你来说有点不太友好. 在领域驱动设计中, 数据库和通用的数据源并不那么重要, 程序对持久化一无所知.
+如果你之前都是以 **数据库** 为中心的开发模式 (数据库是应用程序的核心), 那么这篇文章将对你来说有点不太友好. 在领域驱动设计中, 数据库和通用的数据源并不那么重要, 程序对持久化一无所知.
 
 > Put your infrastructure interfaces in to Domain Model Layer. Your domain will use them to get data, it doesn't need to care how, it just knows there is an interface exposed and it will use it. This simplifies things and allows you to focus on your actual Domain rather worrying about what database you will be using, where data is coming from, etc.
 
-将基础设施层的接口放入在领域模型层中, 领域将使用这些接口读取数据, 领域并不需要关心如何实现, 领域仅需要知道这有暴露的可以使用的接口. 这样简化了很多事情.
+领域通过使用领域模型层中引用的基础设施层接口读取数据, 领域仅仅只需要关心这有基础设施层公开的接口可以使用, 并不需要关心这些接口是如何实现的. 这就简化了大量的事情, 让开发者更加专注于真实的领域, 而不是去关心使用的数据库是什么, 数据来自何处等等这些问题.
 
 ## 基础设施层契约 Infrastructure Contracts
 
@@ -24,15 +24,17 @@ public interface INewsletterSubscriber
 }
 ```
 
+*译者注: 这两枚接口分别演示了与邮箱服务器和消息队列通信. 作者的意思是基础设施层并不仅仅是只存放数据库的操作类, 还可以放入一些 IO 读写, 网络访问之类的操作.*
+
 ```cs
 // this lives in the core library and you can inherit from it and extend it
 // e.g. ICustomerRepository : IRepository<Customer> then you can add some
 // custom methods to your new interface. This can be useful if you want to 
 // uselize some of rich features of the ORM that you are using (should be a very rare case)
 //
-// 这个位于核心类库, 你可以继承自它并扩展; 例如: ICustomerRepository : IRepository<Customer>
-// 然后就能向新接口中添加一些自定义的方法. 这个可以十分有用, 如果你想使用一些当前正在使用的 ORM
-// 的丰富功能 (这是十分罕见的).
+// 它位于核心类库中, 你可以继承自它并扩展; 例如: ICustomerRepository : IRepository<Customer>
+// 然后就能向新接口中添加一些自定义的方法. 如果你想用些正在使用的 ORM 框架的额外特性,
+// 这还是蛮有用. (应该是十分罕见的情形).
 public interface IRepository<TEntity>
     where TEntity : IDomainEntity
 {
@@ -114,19 +116,19 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
         // smtp = SmtpEmailDispatcher (current),
         // exchange = ExchangeEmailDispatcher,
         // msmq = MsmqEmailDispatcher, etc... let infrastructure worry about it
-
-        // 范例 #1: 调用 email 分发接口. 这在上下文中的实现依赖可以有不同的种类.
+        //
+        // 范例 #1: 调用 email 分发器接口. 这个取决于上下文可以有不同种类的实现, 比如:
         // smtp = SmtpEmailDispatcher (current),
         // exchange = ExchangeEmailDispatcher,
-        // msmq = MsmqEmailDispatcher, 等等... 让基础设施层去关心它.
+        // msmq = MsmqEmailDispatcher, 等等... 让基础设施层去关心它吧.
         this.emailDispatcher.Dispatch(new MailMessage());
 
         // example #2 calling an interface newsletter subscriber
         // this can differnet kind of implementation e.g
         // web service = WSNewsletterSubscriber (current), msmq = MsmqNewsletterSubscriber,
         // Sql = SqlNewsletterSubscriber, etc... let infrastructure worry about it.
-
-        // 范例 #2: 调用通信订阅者接口, 这有不同的实现方式, 例如:
+        //
+        // 范例 #2: 调用通信订阅接口, 这可以有不同的实现方式, 例如:
         // web service = WSNewsletterSubscriber (current),
         // msmq = MsmqNewsletterSubscriber,
         // Sql = SqlNewsletterSubscriber, 等等... 让基础设施层去关心它.
@@ -143,29 +145,29 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
 
 > - Domain is the heart of the application not the Infrastructure (this can be hard to grasp if you come from DBA background).
 
-- 领域是应用程序的核心而非基础设施层 (如果有 DBA 背景的开发者这将有点难以领悟).
+- 领域才是应用程序的核心而非基础设施层 (这对于有 DBA 背景的开发者将有点难以理解).
 
 > - Infrastructure is not important in Domain-design design, it facilitates the application development doesn't lead it.
 
-- 基础设施层在领域驱动设计中并不重要, 它促进了应用程序的开发, 而非引领程序的开发.
+- 基础设施层在领域驱动设计中并不重要, 它促进了应用程序的开发, 而非引导程序的开发.
 
 > - Infrastructure should not contain any domain logic, all domain logic should be in the domain. (i guarantee that when you first start out, you will put logic in there without knowing it)
 
-- 基础设施层不应该包含任何领域逻辑, 所有的领域逻辑应该位于领域中. (我保证, 当你第一次使用基础设施层的时候, 你会在不经意间把逻辑放在基础设施层里)
+- 基础设施层不应该包含任何领域逻辑, 所有的领域逻辑应该位于领域中. (我保证, 当你第一次开发基础设施层的时候, 你会在不经意间把逻辑放在基础设施层里)
 
 ## 技巧 Tips
 
 > When it comes to repositories try and just use a generic repository and stay away from custom implementations as much as possible i.e. IRepository<Customer> = good, ICustomerRepository = bad (it's never that simple, but a good general rule to work with).
 
-当涉及到数据仓储时, 尝试仅用通用的数据仓储, 并尽可能地保持远离自定义的实现. 即: `IRepository<Customer>` 是良好的设计, 而 `ICustomerRepository` 则是糟糕的设计. (这永远不会这么简单, 但一个良好且通用的规则需要处理.)
+当涉及到数据仓储时, 尝试只用通用的数据仓储, 并尽可能地远离自定义的实现. 即: `IRepository<Customer>` 是良好的设计, 而 `ICustomerRepository` 则是糟糕的设计. (其实肯定没那么简单, 但可作为一个很好的通用规则.)
 
 > When you first start out with infrastructure implementations, force your self not to put any if statements in to it. This will help your mind adjust to leaving all logic out of the Infrastructure Layer.
 
-当你开始实现基础设施层时, 关注你自己不要将任何 `if` 语句放在里面, 这会有助于你的思维逻辑调整, 将所有的业务逻辑排除在基础设施层之外.
+当你第一次实现基础设施层时, 强制自己不要在里面放置任何的 `if` 语句. 这会有助于你调整思维逻辑, 把所有的业务逻辑排除在基础设施层之外.
 
 > Take your time and try and understand what persistence ignorance really means, also try and research polyglot persistence this will expand your understanding.
 
-花点时间去尝试理解忽略持久化的真正含义, 再尝试去搜索一下多语种持久化会扩展你的理解.
+花点时间去尝试理解 *对持久化一无所知* 的真正含义, 也试着研究一下多语种持久化, 这将扩展你的理解.
 
 ## 有用的链接 Useful links
 
@@ -177,6 +179,6 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
 
 - [多语种持久性](http://www.martinfowler.com/bliki/PolyglotPersistence.html) - Martin Fowler
 
-> *Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.
+> **Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.*
 
 **注意: 本文中的代码尚未准备好投入生产, 仅用于原型设计. 如果有建议和反馈, 请发表评论.*
