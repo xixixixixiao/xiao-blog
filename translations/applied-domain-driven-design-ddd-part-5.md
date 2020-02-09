@@ -2,13 +2,13 @@
 
 > Domain Service is not be confused with Application Service or Web Service. Domain Service lives in the Domain Model Layer. Unlike Application or Web Service, Domain Service should not be called each time to access Domain Model Layer. You can call your repository interface in the Application Layer and get the Domain Entity directly.
 
-不要将领域服务与应用程序服务, Web 服务弄混淆了. 领域服务位于领域模型层. 与应用程序服务或者 Web 服务不同, 不应该每次调用领域服务去访问领域模型层. 你可以在应用程序层中调用数据仓储接口, 直接获取领域实体.
+不要将领域服务与应用程序服务, Web 服务弄混淆了. 领域服务位于领域模型层. 与应用程序服务或者 Web 服务不同, 不应该每次都通过调用领域服务去访问领域模型层. 你可以在应用程序层中调用数据仓储接口, 直接获取领域实体.
 
 ## 需求 Requirement
 
 > Your business is responsible for collecting and paying Value Added Tax (VAT) based off your business location, your customer's location, and the type of product you are selling.
 
-你的企业负责通过 *营业地点*, *客户所在的地点* 以及 *要销售的产品类型* 来收集和支付增值税 (VAT).
+你的企业通过 *营业地点*, *客户所在的地点* 以及 *要销售的产品类型* 来负责收取和支付增值税 (VAT).
 
 ## 领域服务示例 Domain Service Sample
 
@@ -70,7 +70,7 @@ customer.Cart.Add(CartProduct.Create(customer.Cart, product, productQuantity, ta
 
 > - It's a great place for calculation and validation as it can access entities, and other kind of objects (e.g. Settings) that are not available via the entity graph.
 
-- 领域服务是放置计算, 验证的最佳场所, 因为领域服务可以访问实体和通过实体图谱 (entity graph) 无法访问的其他类型的对象, 例如 `Settings`.
+- 领域服务是放置计算, 验证的最佳场所, 因为领域服务可以访问实体和其他无法通过实体图谱 (entity graph) 访问的对象, 例如 `Settings`.
 
 > - Methods should return primitive types, custom enums are fine too.
 
