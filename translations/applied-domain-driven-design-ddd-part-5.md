@@ -1,5 +1,7 @@
 # 应用领域驱动设计, 第五章 - 领域服务 Applied Domain-Driven Design (DDD), Part 5 - Domain Service
 
+原文: [Applied Domain-Driven Design (DDD), Part 5 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+
 > Domain Service is not be confused with Application Service or Web Service. Domain Service lives in the Domain Model Layer. Unlike Application or Web Service, Domain Service should not be called each time to access Domain Model Layer. You can call your repository interface in the Application Layer and get the Domain Entity directly.
 
 不要将领域服务与应用程序服务, Web 服务弄混淆了. 领域服务位于领域模型层. 与应用程序服务或者 Web 服务不同, 不应该每次都通过调用领域服务去访问领域模型层. 你可以在应用程序层中调用数据仓储接口, 直接获取领域实体.
