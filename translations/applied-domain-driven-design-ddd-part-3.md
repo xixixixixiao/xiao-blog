@@ -130,7 +130,7 @@ public interface IRepository<TEntity>
 
 > - Specification allows you to query data in a abstract way i.e. you can query memory collections or an RDBMS. This ensures persistence/infrastructure ignorance.
 
-- 规范允许你以一种抽象的方式查询数据, 也就是说, 你可以查询内存集合或者查询关系型数据库. 规范确保了持久层 / 基础设施层的未知.
+- 规范允许你以一种抽象的方式查询数据, 也就是说, 你可以查询内存集合或者查询关系型数据库. 规范确保了持久层 / 基础设施的未知.
 
 > - Specification encapsulates a business rule in one spec.
 
@@ -142,7 +142,7 @@ public interface IRepository<TEntity>
 
 > - Specification makes your domain layer DRY i.e. you don't need to write same LINQ all over again.
 
-- 规范使你的领域层干燥, 也就是你不需要再写同样的 LINQ 语句了.
+- 规范使你的领域层**干燥**, 也就是你不需要再写同样的 LINQ 语句了.
 
 > - Specifications are easy to unit test.
 

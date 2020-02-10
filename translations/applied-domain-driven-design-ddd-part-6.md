@@ -10,7 +10,7 @@
 
 无论何种类型的应用程序都应该可以使用`应用服务`, 包括手机, 桌面或者 Web 应用. 当开始建立`应用服务`和分布式接口层 (Web Service) 时, 最好把这点记在心里.
 
-## 应用程序服务契约 (位于单独的项目中) Application Service Contract (lives in a separate project):
+## 应用程序服务契约 (位于单独的项目中) Application Service Contract (lives in a separate project)
 
 ```cs
 public interface ICartService
@@ -50,7 +50,7 @@ public class CheckOutResultDto
 }
  ```
 
-## 应用服务的实现 Application Service Implementation:
+## 应用服务的实现 Application Service Implementation
 
 ```cs
 public class CartService : ICartService
@@ -146,7 +146,7 @@ public class CartService : ICartService
 }
 ```
 
-## 使用范例 Example usage:
+## 使用范例 Example usage
 
 ```cs
 this.cartService.Add(
@@ -161,49 +161,49 @@ this.cartService.Add(
 CheckOutResultDto checkoutResult = this.cartService.CheckOut(this.customer.id);
 ```
 
-## 总结 Summary:
+## 总结 Summary
 
 > - Application Service is a gateway in to your Domain Model Layer via Dto's (Data Transfer Objects)
 
-`应用服务`是 DTO (数据传输对象) 进入领域模型层的网关.
+- `应用服务`是 DTO (数据传输对象) 进入领域模型层的网关.
 
 > - Application Service should not encapsulate any domain logic, it should be really thin 
 
-`应用服务`不应该封装任何领域逻辑. 它应该极度轻薄.
+- `应用服务`不应该封装任何领域逻辑. 它应该极度轻薄.
 
 > - Application Service method should do only one thing and do it well with one region of the domain, don't mix it to "make it more performance efficient for the Application that's consuming it".
 
-`应用服务`的方法应该只做一件事, 配合好领域的一个区域. 不要错误地认为 "直接使用领域的应用程序的性能会更加高效".
+- `应用服务`的方法应该只做一件事, 配合好领域的一个区域. 不要错误地认为 "直接使用领域的应用程序的性能会更加高效".
 
 > - To access Application Service you expose interface and Dto's for inputs and outputs (it's important not to expose your Domain Entity in a raw format, Dto is a proxy and it protects your domain)
 
-为了访问`应用服务`, 你应该公开`应用服务`的接口和 DTO, 方便接收输入和输出. (不要公开暴露领域实体的原始格式很重要, DTO 作为领域实体的代理保护了领域)
+- 为了访问`应用服务`, 你应该公开`应用服务`的接口和 DTO, 方便接收输入和输出. (不要公开暴露领域实体的原始格式很重要, DTO 作为领域实体的代理保护了领域)
 
 > - Presenter (mobile app, desktop or web), should call different services to get data it needs and manipulate it to suit the UI. This might seem inefficient, or wasteful at first. You will realise that actually it's just as fast (if not faster), easier to test and maintain. 
 
-表示层 (移动应用, 桌面应用或者 Web 应用) 应该调用不同的服务去获取它们需要的数据, 并对数据进行调整以适配 UI. 乍一看, 这好像有点低效浪费, 实际上你应该意识到它们一样快 (不亚于更快), 因为易于调试和维护.
+- 表示层 (移动应用, 桌面应用或者 Web 应用) 应该调用不同的服务去获取它们需要的数据, 并对数据进行调整以适配 UI. 乍一看, 这好像有点低效浪费, 实际上你应该意识到它们一样快 (不亚于更快), 因为易于调试和维护.
 
-## 技巧 Tips:
+## 技巧 Tips
 
 > - Use AutoMapper to map your Domain Entity to Dto's, don't waste your time with manual mapping. It clutters your implementation code and maintenance becomes a nightmare. 
 
-要使用 `AutoMapper` 去映射领域实体到 DTO, 不要浪费时间在手动映射上. 手动映射会把实现代码弄得乱七八糟, 然后维护就成了噩梦.
+- 要使用 `AutoMapper` 去映射领域实体到 DTO, 不要浪费时间在手动映射上. 手动映射会把实现代码弄得乱七八糟, 然后维护就成了噩梦.
 
 > - Don't think of screens when it comes to exposing Application Services, it's an API, think how a mobile app would access it, or how external potential customers would use it.
 
-当涉及公开`应用服务`时, 不要考虑到界面之类的事情, `应用服务`是 API, 要考虑移动应用将会如何访问它, 或者潜在的外部客户端如何使用它.
+- 当涉及公开`应用服务`时, 不要考虑到界面之类的事情, `应用服务`是 API, 要考虑移动应用将会如何访问它, 或者潜在的外部客户端如何使用它.
 
 > - Realise that you will end up writing Application Services that suit your UI. This is only natural as this is what you been doing for a while. It will take a few goes before you change your thinking.
 
-我想你最终肯定会为了适配 UI 去编写`应用服务`. 这个做法其实很自然的, 因为你之前就一直这么做了好长时间, 所以你得试几次才能转变思路. (译者注: 就是不要为了适配 UI 去编写`应用服务`.)
+- 我想你最终肯定会为了适配 UI 去编写`应用服务`. 这个做法其实很自然的, 因为你之前就一直这么做了好长时间, 所以你得试几次才能转变思路. (译者注: 就是不要为了适配 UI 去编写`应用服务`.)
 
 > - Application Service can be consumed directly if you don't need distribution i.e. your MVC app will just reference Application Service directly, you can then just try and catch errors in your Controller.
 
-如果不需要单独分发`应用服务`的话, 则可以直接使用它. 也就是说, MVC 应用可以直接引用`应用服务`, 然后就可以在控制器中使用 `try-catch` 去捕获错误了.
+- 如果不需要单独分发`应用服务`的话, 则可以直接使用它. 也就是说, MVC 应用可以直接引用`应用服务`, 然后就可以在控制器中使用 `try-catch` 去捕获错误了.
 
 > - Application Service can be exposed via Web Service (Distributed Interface Layer). This further abstraction give you ability to "try and catch" errors so they can be exposed in a friendlier manner. Additionally it allows you to future proof your application e.g. versioning.
 
-`应用服务`可以通过 Web Service (分布式接口层) 的方式公开. 这种进一步地抽象让你可以用 `try-catch` 去捕获错误, 方便以更加友好的方式公开这些错误. 此外, 它还能在未来去验证应用程序, 比如接口版本之类的.
+- `应用服务`可以通过 Web Service (分布式接口层) 的方式公开. 这种进一步地抽象让你可以用 `try-catch` 去捕获错误, 方便以更加友好的方式公开这些错误. 此外, 它还能在未来去验证应用程序, 比如接口版本之类的.
 
 > **Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.*
 

@@ -4,7 +4,7 @@
 
 > Domain Service is not be confused with Application Service or Web Service. Domain Service lives in the Domain Model Layer. Unlike Application or Web Service, Domain Service should not be called each time to access Domain Model Layer. You can call your repository interface in the Application Layer and get the Domain Entity directly.
 
-不要将领域服务与应用程序服务, Web 服务弄混淆了. 领域服务位于领域模型层. 与应用程序服务或者 Web 服务不同, 不应该每次都通过调用领域服务去访问领域模型层. 你可以在应用程序层中调用数据仓储接口, 直接获取领域实体.
+不要将领域服务与应用服务, Web Service 弄混淆了. 领域服务位于领域模型层. 与应用服务或者 Web Service 不同, 不应该每次都通过调用领域服务去访问领域模型层. 你可以在应用层中调用数据仓储接口, 直接获取领域实体.
 
 ## 需求 Requirement
 
@@ -58,17 +58,17 @@ customer.Cart.Add(CartProduct.Create(customer.Cart, product, productQuantity, ta
 
 > - Domain Service allows you to capture logic that doesn't belong in the Domain Entity.
 
-可以通过领域服务捕获不属于领域实体的业务逻辑.
+- 可以通过领域服务捕获不属于领域实体的业务逻辑.
 
 > - Domain Service allows you to orchestrate between different Domain Entities.
 
-可以通过领域服务在不同的领域实体间进行协调.
+- 可以通过领域服务在不同的领域实体间进行协调.
 
 ## 技巧 Tips
 
 > - Don't create too many Domain Services, most of the logic should reside in the domain entities, event handlers, etc.
 
-不要创造太多的领域服务, 绝大多数的逻辑应该驻留在领域实体, 事件处理代码等中.
+- 不要创造太多的领域服务, 绝大多数的逻辑应该驻留在领域实体, 事件处理代码等中.
 
 > - It's a great place for calculation and validation as it can access entities, and other kind of objects (e.g. Settings) that are not available via the entity graph.
 
@@ -76,7 +76,7 @@ customer.Cart.Add(CartProduct.Create(customer.Cart, product, productQuantity, ta
 
 > - Methods should return primitive types, custom enums are fine too.
 
-方法应该返回原始类型, 自定义枚举类型也可以.
+- 方法应该返回原始类型, 自定义枚举类型也可以.
 
 > **Note: Code in this article is not production ready and is used for prototyping purposes only. If you have suggestions or feedback please do comment.*
 

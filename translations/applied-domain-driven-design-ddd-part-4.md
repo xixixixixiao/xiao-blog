@@ -1,4 +1,4 @@
-# 应用领域驱动设计, 第四章 - 基础设施层 Applied Domain-Driven Design (DDD), Part 4 - Infrastructure
+# 应用领域驱动设计, 第四章 - 基础设施 Applied Domain-Driven Design (DDD), Part 4 - Infrastructure
 
 原文: [Applied Domain-Driven Design (DDD), Part 4 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
 
@@ -8,9 +8,9 @@
 
 > Put your infrastructure interfaces in to Domain Model Layer. Your domain will use them to get data, it doesn't need to care how, it just knows there is an interface exposed and it will use it. This simplifies things and allows you to focus on your actual Domain rather worrying about what database you will be using, where data is coming from, etc.
 
-领域通过使用领域模型层中引用的基础设施层接口读取数据, 领域仅仅只需要关心这有基础设施层公开的接口可以使用, 并不需要关心这些接口是如何实现的. 这就简化了大量的事情, 让开发者更加专注于真实的领域, 而不是去关心使用的数据库是什么, 数据来自何处等等这些问题.
+领域通过使用领域模型层中引用的基础设施接口读取数据, 领域仅仅只需要关心这有基础设施公开的接口可以使用, 并不需要关心这些接口是如何实现的. 这就简化了大量的事情, 让开发者更加专注于真实的领域, 而不是去关心使用的数据库是什么, 数据来自何处等等这些问题.
 
-## 基础设施层契约 Infrastructure Contracts
+## 基础设施契约 Infrastructure Contracts
 
 ```cs
 public interface IEmailDispatcher
@@ -24,7 +24,7 @@ public interface INewsletterSubscriber
 }
 ```
 
-*译者注: 这两枚接口分别演示了与邮箱服务器和消息队列通信. 作者的意思是基础设施层并不仅仅是只存放数据库的操作类, 还可以放入一些 IO 读写, 网络访问之类的操作.*
+*译者注: 这两枚接口分别演示了与邮箱服务器和消息队列通信. 作者的意思是基础设施并不仅仅是只存放数据库的操作类, 还可以放入一些 IO 读写, 网络访问之类的操作.*
 
 ```cs
 // this lives in the core library and you can inherit from it and extend it
@@ -120,7 +120,7 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
         // 范例 #1: 调用 email 分发器接口. 这个取决于上下文可以有不同种类的实现, 比如:
         // smtp = SmtpEmailDispatcher (current),
         // exchange = ExchangeEmailDispatcher,
-        // msmq = MsmqEmailDispatcher, 等等... 让基础设施层去关心它吧.
+        // msmq = MsmqEmailDispatcher, 等等... 让基础设施去关心它吧.
         this.emailDispatcher.Dispatch(new MailMessage());
 
         // example #2 calling an interface newsletter subscriber
@@ -131,7 +131,7 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
         // 范例 #2: 调用通信订阅接口, 这可以有不同的实现方式, 例如:
         // web service = WSNewsletterSubscriber (current),
         // msmq = MsmqNewsletterSubscriber,
-        // Sql = SqlNewsletterSubscriber, 等等... 让基础设施层去关心它.
+        // Sql = SqlNewsletterSubscriber, 等等... 让基础设施去关心它.
         this.newsletterSubscriber.Subscribe(args.Customer);
     }
 }
@@ -141,19 +141,19 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
 
 > - Infrastructure contains implementation classes that actually talks to the infrastructure IO, Sql, Msmq, etc.
 
-- 基础设施层包含了实际与 IO, 数据库, 消息队列等通信的实现类.
+- 基础设施包含了实际与 IO, 数据库, 消息队列等通信的实现类.
 
 > - Domain is the heart of the application not the Infrastructure (this can be hard to grasp if you come from DBA background).
 
-- 领域才是应用程序的核心而非基础设施层 (这对于有 DBA 背景的开发者将有点难以理解).
+- 领域才是应用程序的核心而非基础设施 (这对于有 DBA 背景的开发者将有点难以理解).
 
 > - Infrastructure is not important in Domain-design design, it facilitates the application development doesn't lead it.
 
-- 基础设施层在领域驱动设计中并不重要, 它促进了应用程序的开发, 而非引导程序的开发.
+- 基础设施在领域驱动设计中并不重要, 它促进了应用程序的开发, 而非引导程序的开发.
 
 > - Infrastructure should not contain any domain logic, all domain logic should be in the domain. (i guarantee that when you first start out, you will put logic in there without knowing it)
 
-- 基础设施层不应该包含任何领域逻辑, 所有的领域逻辑应该位于领域中. (我保证, 当你第一次开发基础设施层的时候, 你会在不经意间把逻辑放在基础设施层里)
+- 基础设施不应该包含任何领域逻辑, 所有的领域逻辑应该位于领域中. (我保证, 当你第一次开发基础设施的时候, 你会在不经意间把逻辑放在基础设施里)
 
 ## 技巧 Tips
 
@@ -163,7 +163,7 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
 
 > When you first start out with infrastructure implementations, force your self not to put any if statements in to it. This will help your mind adjust to leaving all logic out of the Infrastructure Layer.
 
-当你第一次实现基础设施层时, 强制自己不要在里面放置任何的 `if` 语句. 这会有助于你调整思维逻辑, 把所有的业务逻辑排除在基础设施层之外.
+当你第一次实现基础设施时, 强制自己不要在里面放置任何的 `if` 语句. 这会有助于你调整思维逻辑, 把所有的业务逻辑排除在基础设施之外.
 
 > Take your time and try and understand what persistence ignorance really means, also try and research polyglot persistence this will expand your understanding.
 

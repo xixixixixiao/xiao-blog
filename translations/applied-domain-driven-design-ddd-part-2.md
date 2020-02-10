@@ -171,15 +171,15 @@ public enum EmailTemplate
 
 > - Domain event handlers should not change the state of the object that caused domain event to be triggered.
 
-领域事件处理程序不应该改变导致领域事件触发的对象的状态.
+- 领域事件处理程序不应该改变导致领域事件触发的对象的状态.
 
 > - Domain events should be raised inside the domain.
 
-领域事件应该由领域内部引发.
+- 领域事件应该由领域内部引发.
 
 > - Domain events handlers should be looked at as a side effect / chain reaction facilitator.
 
-领域事件处理程序应该被视为副作用或者连锁反应的引导者.
+- 领域事件处理程序应该被视为副作用或者连锁反应的引导者.
 
 ## 一些有用的链接 (Useful links)
 
