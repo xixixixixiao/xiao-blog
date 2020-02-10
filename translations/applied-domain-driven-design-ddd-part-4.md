@@ -169,7 +169,7 @@ public class CustomerCreatedHandle : Handles<CustomerCreated>
 
 花点时间去尝试理解 *对持久化一无所知* 的真正含义, 也试着研究一下多语种持久化, 这将扩展你的理解.
 
-## 有用的链接 Useful links
+## 一些有用的链接 Useful links
 
 > - [Onion architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) (i really don't like the name) showcases well how you need to start thinking about infrastructure layer - Jeffrey Palermo
 
