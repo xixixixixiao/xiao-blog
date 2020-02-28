@@ -1,6 +1,12 @@
 # 应用领域驱动设计, 第六章 - 应用服务 Applied Domain-Driven Design (DDD), Part 7 - Read Model
 
+原文: [Applied Domain-Driven Design (DDD), Part 7 - Read Model](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
+
 > When I first started using DDD I came across a really messy situation. I had my aggregate root and it linked it self to another child aggregate root. Everything worked really well. Shortly after everything was written new requirement came through, I had to expose counts and sums of data based on different filters. This was very painful, I ended up modifying my aggregate roots to try and provide these additional properties. This approach did not perform, for each aggregate root, it was loading another aggregate root with entities and summing them. I've played around with NHibernate mapping files and I've managed to make it performant. By this point I've optimized NHibernate mapping files and my aggregate roots were polluted with query methods. I really didn't like this approach. Shortly after I've came up with another idea, how about we create an immutable model that maps directly to the SQL view and we let the infrastructure handle the mapping? This way our aggregate roots will remain unaffected and we will get much better performance through SQL querying! This is when I have discovered the read model.
+
+当我第一次开始使用领域驱动设计时, 我遇到了个十分麻烦的情况. 我有我的聚合根和链接到子聚合根的聚合根, 所有的事情都工作的很好. 
+
+当我第一次开始使用DDD时，我遇到了一个非常混乱的情况。我有我的聚合根，它链接到另一个子聚合根。一切都很顺利。在编写新要求后不久，我不得不根据不同的筛选器公开数据计数和总和。这是非常痛苦的，我最终修改了我的聚合根，尝试并提供这些额外的属性。此方法没有执行，对于每个聚合根，它加载另一个聚合根与实体并求和它们。我玩弄了NHibernate映射文件，我设法使它的性能。至此，我优化了 NHibernate 映射文件，并且我的聚合根被查询方法污染了。我真的不喜欢这种方法。在提出另一个想法后不久，我们创建一个不可变的模型，直接映射到 SQL 视图，然后让基础结构来处理映射，怎么样？这样，我们的聚合根将不受影响，我们将通过 SQL 查询获得更好的性能！这是当我发现读取模型。
 
 > In this article we are going to explore how we can end up in this messy situation and why you should use the read model for data mash up and summarisation.
 

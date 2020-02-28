@@ -24,7 +24,7 @@
 
   - 2020-02-11 [应用领域驱动设计, 第六章 - 应用服务](./translations/applied-domain-driven-design-ddd-part-6.md)
 
-  - 2020-02-11 [应用领域驱动设计, 第七章 - 读模式服务](./translations/applied-domain-driven-design-ddd-part-7.md)
+  - 2020-02-12 [应用领域驱动设计, 第七章 - 读模型](./translations/applied-domain-driven-design-ddd-part-7.md)
 
   - 2020-02-11 [应用领域驱动设计, 番外篇 - 五个最佳实践](./translations/domain-driven-design-my-top-best-practices.md)
 
@@ -36,19 +36,9 @@
 
 ## TODO
 
-- 2020-01-02 [为什么你应该使用领域驱动设计](http://www.informit.com/articles/article.aspx?p=1944876&seqNum=2)
-
-- 2020-01-02 [为什么我不使用领域驱动设计](https://www.tonymarston.net/php-mysql/dont-do-domain-driven-design.html)
-
 - ASP.NET Core Authentication with JWT and Angular
 
   - 2020-01-10 [ASP.NET Core 认证之 JWT 与 Angular – 第一章](https://code-maze.com/authentication-aspnetcore-jwt-1/)
   - 2020-01-10 [ASP.NET Core 认证之 JWT 与 Angular – 第二章](https://code-maze.com/authentication-aspnetcore-jwt-2/)
 
 - [Angular 开发最佳实践](https://code-maze.com/angular-best-practices/)
-
-- *WPF 基础教程*
-
-  - WPF 是什么
-
-  - WPF 编程套路
