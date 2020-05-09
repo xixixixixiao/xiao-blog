@@ -1,4 +1,4 @@
-# 应用领域驱动设计, 第六章 - 应用服务 Applied Domain-Driven Design (DDD), Part 7 - Read Model
+# 应用领域驱动设计, 第七章 - 读模型 (Read Model) Applied Domain-Driven Design (DDD), Part 7 - Read Model
 
 原文: [Applied Domain-Driven Design (DDD), Part 7 - Read Model](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
 

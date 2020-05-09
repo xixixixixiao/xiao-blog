@@ -14,12 +14,12 @@
 - [应用领域驱动设计, 第一章 - 基础](applied-domain-driven-design-ddd-part-1.md)
 - [应用领域驱动设计, 第二章 - 领域事件](http://www.zankavtaskin.com/2013/09/applied-domain-driven-design-ddd-part-2.html)
 - [应用领域驱动设计, 第三章 - 规范模式](http://www.zankavtaskin.com/2013/10/applied-domain-driven-design-ddd-part-3.html)
-- [应用领域驱动设计, 第四章 - Infrastructure](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
-- [应用领域驱动设计, 第五章 - Domain Service](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
-- [应用领域驱动设计, 第六章 - Application Services](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
-- [应用领域驱动设计, 第七章 - Read Model](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
-- [应用领域驱动设计, My Top 5 Best Practices](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
-- [应用领域驱动设计, Event Logging & Sourcing For Auditing](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
+- [应用领域驱动设计, 第四章 - 基础设施](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4_16.html)
+- [应用领域驱动设计, 第五章 - 领域服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+- [应用领域驱动设计, 第六章 - 应用服务](http://www.zankavtaskin.com/2013/11/applied-domain-driven-design-ddd-part-4.html)
+- [应用领域驱动设计, 第七章 - 读模型 (Read Model)](http://www.zankavtaskin.com/2016/06/applied-domain-driven-design-ddd-part-7.html)
+- [应用领域驱动设计, 番外篇 - 五个最佳实践](https://www.codeproject.com/Articles/1131462/Domain-Driven-Design-My-Top-Best-Practices)
+- [应用领域驱动设计, 番外篇 - 事件日志 & 审计资源](http://www.zankavtaskin.com/2016/08/applied-domain-driven-design-ddd-event.html)
 
 ![领域驱动设计架构 (Domain Driven Design Architecture)](./images/applied-domain-driven-design-ddd-part-1/DDD_png_pure.png)
 
