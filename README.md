@@ -30,6 +30,11 @@
 
   - 2020-02-11 [应用领域驱动设计, 番外篇 - 事件日志 & 审计资源](./translations/applied-domain-driven-design-ddd-event.md)
 
+- *.NET Core Socket 网络编程*
+
+  - 2020-05-10 [.NET Core Socket 网络编程, 第〇篇 - 基础](./blogs/dotnet-core-socket-network-programming-01-basics.md)
+  - 2020-05-10 [.NET Core Socket 网络编程, 第一篇 - 网络应用程序通信机制](./blogs/dotnet-core-socket-network-programming-02-communication-mechanism.md)
+
 ## BLOG
 
 - 2019-12-31 [实现 WebApi 自托管服务宿主于 WinForms 及其交互](./blogs/run-self-hosting-owin-web-api-inside-winforms.md)
