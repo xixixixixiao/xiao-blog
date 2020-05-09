@@ -4,7 +4,7 @@
 
 ## 0. 完整示例演示
 
-![示例演示](./images/self-hosting-demo-gif.gif)
+![示例演示](./images/self-hosting/self-hosting-demo-gif.gif)
 
 ## 1. 新建解决方案以及 WinForms 工程
 
@@ -12,7 +12,7 @@
 
 如下图所示:
 
-![解决方案结构](./images/self-hosting-solution.png)
+![解决方案结构](./images/self-hosting/self-hosting-solution.png)
 
 - 建立空白解决方案及 Winforms 工程,
 - 新建 `Controllers` 文件夹用于存放 WebApi 代码,
@@ -22,7 +22,7 @@
 
 绘制必要控件, 布局如下:
 
-![窗体布局](./images/self-hosting-main-form.png)
+![窗体布局](./images/self-hosting/self-hosting-main-form.png)
 
 备注: 绘制一个 NumericUpDown 和两个 Button 控件.
 
@@ -195,7 +195,7 @@ public class HomeController : ApiController
 
 ## 5. 合在一起
 
-![解决方案完整结构](./images/self-hosting-solution-complete.png)
+![解决方案完整结构](./images/self-hosting/self-hosting-solution-complete.png)
 
 [下载完整示例代码 (GitHub)](https://github.com/xixixixixiao/xiao-blog/tree/master/solutions/SelfHostingDemo)
 
