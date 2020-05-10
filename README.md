@@ -34,6 +34,8 @@
 
   - 2020-05-10 [.NET Core Socket 网络编程, 第〇篇 - 基础](./blogs/dotnet-core-socket-network-programming-01-basics.md)
   - 2020-05-10 [.NET Core Socket 网络编程, 第一篇 - 网络应用程序通信机制](./blogs/dotnet-core-socket-network-programming-02-communication-mechanism.md)
+  - 2020-05-10 [.NET Core Socket 网络编程, 第二篇 - 支撑 .NET Core 网络编程的基础类](./blogs/dotnet-core-socket-network-programming-02-networking-programming-introduction.md)
+  - 2020-05-11 [.NET Core Socket 网络编程, 第三篇 - Socket 详解](./blogs/dotnet-core-socket-network-programming-03-socket-in-detail.md)
 
 ## BLOG
 
