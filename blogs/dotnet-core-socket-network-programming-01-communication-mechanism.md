@@ -21,7 +21,7 @@
 
 Socket 作为基本的操作单元支持 TCP/IP 网络通信. Socket 可以看成是两个网络应用程序进行通信时, 各自通信连接中的一个 **端点**. 使用 Socket 便于区分不同应用程序的进程之间网络通信和连接. 对于两台通信的计算机而言, Socket 包含了 `发送方 IP`, `发送方端口号`, `接收方 IP`, `接收方端口号`, `协议` 五部分.
 
-![Socket 组成](./images/dotnet-core-socket-networking-programming/02-communication-mechanism/socket-composition.png)
+![Socket 组成](./images/dotnet-core-socket-networking-programming/01-communication-mechanism/socket-composition.png)
 
 ## 3. 基于 Socket 的通信机制
 
@@ -35,4 +35,4 @@ Socket 屏蔽了 TCP/IP 协议簇的复杂性和不同操作系统的差异, 在
 
 如下图所示:
 
-![Socket 之间连接过程](./images/dotnet-core-socket-networking-programming/02-communication-mechanism/socket-transmitting-data.png)
+![Socket 之间连接过程](./images/dotnet-core-socket-networking-programming/01-communication-mechanism/socket-transmitting-data.png)

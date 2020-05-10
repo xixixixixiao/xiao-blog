@@ -36,7 +36,7 @@
 
 `TCP/IP 网络模型` 即 Transmission Control Protocol / Internet Protocol (传输控制协议 / 网际协议) 参考模型. 是互联网的基础, 它将网络功能自上而下地划分为 `应用层`, `传输层`, `网络层` 和 `网络接口层`. 每一层的功能由一系列网络协议去实现. 如图所示:
 
-![TCP/IP 网络模型与协议](./images/dotnet-core-socket-networking-programming/01-basics/tcp-ip-architecture.png)
+![TCP/IP 网络模型与协议](./images/dotnet-core-socket-networking-programming/00-basics/tcp-ip-architecture.png)
 
 `TCP/IP 网络模型` 采用自顶而下的分层结构, 每一层都依赖于下一层所提供的功能.
 
