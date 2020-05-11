@@ -30,6 +30,10 @@
 
   - 2020-02-11 [应用领域驱动设计, 番外篇 - 事件日志 & 审计资源](./translations/applied-domain-driven-design-ddd-event.md)
 
+## BLOG
+
+- 2019-12-31 [实现 WebApi 自托管服务宿主于 WinForms 及其交互](./blogs/run-self-hosting-owin-web-api-inside-winforms.md)
+  
 - *.NET Core Socket 网络编程*
 
   - 2020-05-10 [.NET Core Socket 网络编程, 第〇篇 - 基础](./blogs/dotnet-core-socket-network-programming-00-basics.md)
@@ -37,10 +41,11 @@
   - 2020-05-10 [.NET Core Socket 网络编程, 第二篇 - 支撑 .NET Core 网络编程的基础类](./blogs/dotnet-core-socket-network-programming-02-networking-programming-introduction.md)
   - 2020-05-11 [.NET Core Socket 网络编程, 第三篇 - Socket 详解](./blogs/dotnet-core-socket-network-programming-03-socket-in-detail.md)
 
-## BLOG
+- *STF 学习*
 
-- 2019-12-31 [实现 WebApi 自托管服务宿主于 WinForms 及其交互](./blogs/run-self-hosting-owin-web-api-inside-winforms.md)
-
+  - 2020-05-11 [STF 学习, 第一篇 - 利用 Minitouch 使用鼠标操作手机](./blogs/stf-learn-01-project-screen-to-computer-by-minicap.md)
+  - 2020-05-11 [STF 学习, 第二篇 - 利用 Minicap 将手机屏幕投影到电脑](./blogs/stf-learn-02-touch-screen-on-computer-by-minitouch.md)
+  
 ## TODO
 
 - ASP.NET Core Authentication with JWT and Angular
