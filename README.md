@@ -11,23 +11,14 @@
 - *应用领域驱动设计*
 
   - 2020-01-04 [应用领域驱动设计, 第〇章 - 需求和建模](./translations/applied-domain-driven-design-ddd-part-0.md)
-
   - 2020-01-07 [应用领域驱动设计, 第一章 - 基础](./translations/applied-domain-driven-design-ddd-part-1.md)
-
   - 2020-01-09 [应用领域驱动设计, 第二章 - 领域事件](./translations/applied-domain-driven-design-ddd-part-2.md)
-
   - 2020-01-09 [应用领域驱动设计, 第三章 - 规范模式](./translations/applied-domain-driven-design-ddd-part-3.md)
-
   - 2020-02-11 [应用领域驱动设计, 第四章 - 基础设施](./translations/applied-domain-driven-design-ddd-part-4.md)
-
   - 2020-02-11 [应用领域驱动设计, 第五章 - 领域服务](./translations/applied-domain-driven-design-ddd-part-5.md)
-
   - 2020-02-11 [应用领域驱动设计, 第六章 - 应用服务](./translations/applied-domain-driven-design-ddd-part-6.md)
-
   - 2020-02-12 [应用领域驱动设计, 第七章 - 读模型](./translations/applied-domain-driven-design-ddd-part-7.md)
-
   - 2020-02-11 [应用领域驱动设计, 番外篇 - 五个最佳实践](./translations/domain-driven-design-my-top-best-practices.md)
-
   - 2020-02-11 [应用领域驱动设计, 番外篇 - 事件日志 & 审计资源](./translations/applied-domain-driven-design-ddd-event.md)
 
 ## BLOG
@@ -38,13 +29,21 @@
 
   - 2020-05-10 [.NET Core Socket 网络编程, 第〇篇 - 基础](./blogs/dotnet-core-socket-network-programming-00-basics.md)
   - 2020-05-10 [.NET Core Socket 网络编程, 第一篇 - 网络应用程序通信机制](./blogs/dotnet-core-socket-network-programming-01-communication-mechanism.md)
-  - 2020-05-10 [.NET Core Socket 网络编程, 第二篇 - 支撑 .NET Core 网络编程的基础类](./blogs/dotnet-core-socket-network-programming-02-networking-programming-introduction.md)
+  - 2020-05-10 [.NET Core Socket 网络编程, 第二篇 - 支撑 .NET Core 网络编程的基础类](./blogs/dotnet-core-socket-network-programming-02-networking-programming-basic-class.md)
   - 2020-05-11 [.NET Core Socket 网络编程, 第三篇 - Socket 详解](./blogs/dotnet-core-socket-network-programming-03-socket-in-detail.md)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第四篇 - 面向有连接的网络编程初窥: 使用 TCP](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第五篇 - 面向有连接的网络编程初窥: 使用网络流](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第六篇 - 面向无连接的网络编程初窥: 使用 UDP](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第七篇 - 面向有连接的网络编程: 使用 TcpListener 与 TcpClient](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第八篇 - 面向无连接的网络编程: 使用 UdpClient](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第九篇 - P2P 网络编程](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 面向有连接的网络编程示例](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 面向无连接的网络编程示例](.)
 
 - *STF 学习*
 
-  - 2020-05-11 [STF 学习, 第一篇 - 利用 Minitouch 使用鼠标操作手机](./blogs/stf-learn-01-project-screen-to-computer-by-minicap.md)
-  - 2020-05-11 [STF 学习, 第二篇 - 利用 Minicap 将手机屏幕投影到电脑](./blogs/stf-learn-02-touch-screen-on-computer-by-minitouch.md)
+  - 2020-05-11 [STF 学习, 第一篇 - C# 解析 Minicap 将手机屏幕实时渲染到 WPF](./blogs/stf-learn-01-analyze-minicap-to-render-wpf-with-csharp.md)
+  - 2020-05-11 [STF 学习, 第二篇 - C# 解析 Minitouch 实时操作手机屏幕](./blogs/stf-learn-02-analyze-minitouch-to-touch-screen-with-csharp.md)
   
 ## TODO
 
