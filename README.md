@@ -31,14 +31,14 @@
   - 2020-05-10 [.NET Core Socket 网络编程, 第一篇 - 网络应用程序通信机制](./blogs/dotnet-core-socket-network-programming-01-communication-mechanism.md)
   - 2020-05-10 [.NET Core Socket 网络编程, 第二篇 - 支撑 .NET Core 网络编程的基础类](./blogs/dotnet-core-socket-network-programming-02-networking-programming-basic-class.md)
   - 2020-05-11 [.NET Core Socket 网络编程, 第三篇 - Socket 详解](./blogs/dotnet-core-socket-network-programming-03-socket-in-detail.md)
-  - 2020-05-12 [.NET Core Socket 网络编程, 第四篇 - 面向有连接的网络编程初窥: 使用 TCP](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 第五篇 - 面向有连接的网络编程初窥: 使用网络流](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 第六篇 - 面向无连接的网络编程初窥: 使用 UDP](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 第七篇 - 面向有连接的网络编程: 使用 TcpListener 与 TcpClient](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 第八篇 - 面向无连接的网络编程: 使用 UdpClient](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第四篇 - 面向连接的网络编程初窥: 使用 TCP](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第五篇 - 面向连接的网络编程初窥: 使用 NetworkStream](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第七篇 - 面向连接的网络编程进阶: 使用 TcpListener 与 TcpClient](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第六篇 - 无连接的网络编程初窥: 使用 UDP](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 第八篇 - 无连接的网络编程进阶: 使用 UdpClient](.)
   - 2020-05-12 [.NET Core Socket 网络编程, 第九篇 - P2P 网络编程](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 面向有连接的网络编程示例](.)
-  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 面向无连接的网络编程示例](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 面向连接的网络编程示例](.)
+  - 2020-05-12 [.NET Core Socket 网络编程, 实战篇 - 无连接的网络编程示例](.)
 
 - *STF 学习*
 

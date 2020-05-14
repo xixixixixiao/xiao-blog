@@ -2,9 +2,7 @@
 
 如前所述, Socket 是[支持 TCP/IP 网络通信的基本操作单元](dotnet-core-socket-network-programming-01-communication-mechanism.md)¹. 在一个 Socket 的实例中, 不仅仅保存了本机的 IP 地址和端口, 还保存了目标计算机的 IP 地址和端口, 同时还有通信双方所使用的协议.
 
-Socket 可以被视为 Stream 流一样数据管道, 而 Socket 这个管道存在于服务端与客户端的两台计算机之间, 在计算机之间的数据的发送与接收均在于这个管道中进行. 因此, 在应用程序创建好 Socket 对象之后, 就可以用 `Send`/`SendTo` 方法将数据发送到连接的 Socket 中, 或者使用 `Receive`/`ReceiveFrom` 方法从连接的 Socket 对象中接收数据. 如下图所示, 展示了客户端与服务端进行通信的一般过程:
-
-![Socket 通信步骤](./images/dotnet-core-socket-networking-programming/03-socket-in-detail/socket-step.png)
+Socket 可以被视为 Stream 流一样数据管道, 而 Socket 这个管道存在于服务端与客户端的两台计算机之间, 在计算机之间的数据的发送与接收均在于这个管道中进行. 因此, 在应用程序创建好 Socket 对象之后, 就可以用 `Send`/`SendTo` 方法将数据发送到连接的 Socket 中, 或者使用 `Receive`/`ReceiveFrom` 方法从连接的 Socket 对象中接收数据.
 
 ## 1. Socket 类的类型
 
