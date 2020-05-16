@@ -123,18 +123,33 @@ namespace TcpDemoServer
             // 使用循环反复接收客户端.
             while (true)
             {
+                Console.WriteLine("等待客户端连接...");
+
                 Socket clientSocket = serverSocket.Accept();
+
+                Console.WriteLine($"收到客户端 {clientSocket.RemoteEndPoint} 连接.");
 
                 string message = "来自服务端消息: hello";
                 clientSocket.Send(Encoding.UTF8.GetBytes(message));
 
-                byte[] data = new byte[1024];
-                clientSocket.Receive(data);
+                // 反复多次接收客户端发送的数据.
+                while (true)
+                {
+                    byte[] data = new byte[1024];
 
-                Console.WriteLine($"接收到客户端消息: {Encoding.UTF8.GetString(data)}");
+                    var length = clientSocket.Receive(data);
+                    var result = Encoding.UTF8.GetString(data, 0, length);
 
-                clientSocket.Shutdown(SocketShutdown.Both);
-                clientSocket.Close();
+                    Console.WriteLine($"接收到客户端消息: {result}");
+
+                    if (string.IsNullOrEmpty(result))
+                    {
+                        clientSocket.Shutdown(SocketShutdown.Both);
+                        clientSocket.Close();
+
+                        break;
+                    }
+                }
             }
         }
 

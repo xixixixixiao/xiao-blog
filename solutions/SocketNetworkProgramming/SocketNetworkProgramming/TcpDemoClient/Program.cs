@@ -2,6 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TcpDemoClient
 {
@@ -72,12 +73,23 @@ namespace TcpDemoClient
             // 多次向服务端发送数据.
             for (int i = 0; i < count; i++)
             {
+                // 每次发送都延迟 1 秒, 放缓发送速度.
+                Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+
+                Console.WriteLine($"第 {i + 1} 次向服务端发送消息.");
+
                 var message = "来着客户端消息: world";
                 clientSocket.Send(Encoding.UTF8.GetBytes(message));
             }
 
+            Console.WriteLine("发送完毕, 准备退出.");
+
+           // clientSocket.Send(Encoding.UTF8.GetBytes("exit"));
+
             clientSocket.Shutdown(SocketShutdown.Both);
             clientSocket.Close();
+
+            Console.WriteLine("按回车键退出.");
 
             Console.ReadKey();
         }

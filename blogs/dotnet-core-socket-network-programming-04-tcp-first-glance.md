@@ -90,7 +90,7 @@ static void Main(string[] args)
 }
 ```
 
-*注: 限篇幅, 仅含核心代码.*
+*注: 限篇幅, 文中所示代码均已去掉额外代码, 仅含核心代码, 完整代码参见文章相对应的项目.*
 
 ## 客户端实现
 
@@ -138,7 +138,7 @@ static void Main(string[] args)
 
 ## 为了接收多个客户端
 
-上述服务端的代码在仅仅接收到一次客户端的连接之后, 相互交换了数据就退出了. 现在有个想法是, 服务端完成之后不要退出了, 在与一个客户端交换完成数据之后, 服务端继续等待下一个客户端连接, 再相互交换数据. 为了实现这个想法, 适当地调整下服务端的代码 -- 添加了一个无限循环.
+上述服务端的代码在仅仅接收到 **一次** 客户端的连接之后, 相互交换了数据就退出了. 现在有个想法是, 服务端完成之后不要退出了, 在与一个客户端交换完成数据之后, 服务端继续等待下一个客户端连接, 再相互交换数据. 为了实现这个想法, 适当地调整下服务端的代码 -- 添加了一个无限循环.
 
 实现代码:
 
@@ -176,7 +176,7 @@ static void Main(string[] args)
 
 现在客户端和服务端传输的数据量被约定在 1024 字节. 如果客户端有个数据块比较大, 比如视频文件, 传输给服务端的时候就产生问题了. 服务端由于事先编写程序的时候并不知道将来使用的数据块尺寸到底有多大, 若服务端接收容器设计的太大, 会造成内存浪费, 设计的太小, 又接收不下太大的数据.
 
-为了解决无法接收大文件的缺陷, 客户端认为将要传输的数据太大, 需要分批多次传输. 即, 客户端多次调用 `Send` 方法向服务端发送数据. 此时的服务端程序就有了新的问题, 因为服务端的代码在接收到一次数据之后就关闭连接了.
+为了解决无法接收大文件的缺陷, 客户端认为将要传输的数据太大, 需要分批多次传输. 即, 客户端多次调用 `Send` 方法向服务端发送数据. 此时的服务端程序就有了新的问题, 因为服务端的代码在接收到一次数据之后就关闭连接了. 现在, 调整代码解决这个问题.
 
 首先调整下客户端的代码, 模拟数据量太大, 需要多次调用 `Send` 方法发送:
 
@@ -196,6 +196,9 @@ static void Main(string[] args)
     // 多次向服务端发送数据.
     for (int i = 0; i < count; i++)
     {
+        // 每次发送都延迟 1 秒, 放缓发送速度.
+        Task.Delay(TimeSpan.FromSeconds(1)).Wait();
+
         var message = "来着客户端消息: world";
         clientSocket.Send(Encoding.UTF8.GetBytes(message));
     }
@@ -208,15 +211,48 @@ static void Main(string[] args)
 然后再调整服务端的代码, 以支持当客户端发送了许多数据亦能正确接收.
 
 ```cs
+// 服务端
+static void Main(string[] args)
+{
+    Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+    serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, 50000));
+    serverSocket.Listen(10);
+
+    // 使用循环反复接收客户端.
+    while (true)
+    {
+        Socket clientSocket = serverSocket.Accept();
+
+        string message = "来自服务端消息: hello";
+        clientSocket.Send(Encoding.UTF8.GetBytes(message));
+
+        // 反复多次接收客户端发送的数据.
+        while (true)
+        {
+            byte[] data = new byte[1024];
+
+            var length = clientSocket.Receive(data);
+            var result = Encoding.UTF8.GetString(data, 0, length);
+
+            if (string.IsNullOrEmpty(result))
+            {
+                clientSocket.Shutdown(SocketShutdown.Both);
+                clientSocket.Close();
+                break;
+            }
+        }
+    }
+}
 ```
 
 ## 使用多线程
 
 至此, 通过上面的步骤, 得到了一个运行良好的面向连接的网络通信程序. 然而, 在实际的应用场景中服务端会接收到大量的请求, 常常是多个客户端同时请求连接服务端, 但上述服务端的代码即使经过改良, 亦是同时仅仅支持只有一个客户端的连接, 此时可借助多线程技术再次改良上述服务端代码, 以实现同时与多个客户端通信.
 
-## 如果数据缓冲区大小不匹配
+## 如果双方的缓冲区大小不匹配
 
-## 如果双方处理速度不一致
+## 如果双方的处理速度不一致
 
 ## "粘包" 与 "丢包"
 
