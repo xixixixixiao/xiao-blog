@@ -2,7 +2,7 @@
 
 TCP (传输控制协议) 是基于连接的 Socket 而进行通信. 在本篇将演示如何使用 Socket 在两个 IP 终结点之间建立连接, 并相互发送消息. 如下图所示, 展示了客户端与服务端基于连接的通信的一般过程:
 
-![Socket 通信步骤](./images/dotnet-core-socket-networking-programming/04-tcp-first-glance/socket-step.png)
+![Socket 通信步骤](./images/dotnet-core-socket-networking-programming/02-tcp-first-glance/socket-step.png)
 
 客户端和服务端两边的步骤有所差异, 根据面向连接的 Socket 通信流程图, 总结编程基本步骤如下:
 
@@ -256,11 +256,11 @@ static void Main(string[] args)
 
 通过阅读代码, 可以知道是因为服务端在收发数据的时候, 耽误了 `Accept` 方法去响应新收到的客户端连接.
 
-![单线程模式](images/dotnet-core-socket-networking-programming/04-tcp-first-glance/single-thread-to-accept.png)
+![单线程模式](images/dotnet-core-socket-networking-programming/02-tcp-first-glance/single-thread-to-accept.png)
 
 此时可借助多线程技术再次改良上述服务端代码, 让比较消耗时间的与客户端进行收发数据的工作在另外一个线程执行, 负责接收客户端连接的线程及时折返回去等待响应新的客户端连接, 以实现同时与多个客户端通信.
 
-![多线程模式](images/dotnet-core-socket-networking-programming/04-tcp-first-glance/multi-thread-to-accept.png)
+![多线程模式](images/dotnet-core-socket-networking-programming/02-tcp-first-glance/multi-thread-to-accept.png)
 
 保持客户端的代码不变, 调整服务端的代码, 新增多线程支持即可.
 
@@ -307,3 +307,10 @@ static void Main(string[] args)
 ## 总结
 
 TCP 协议的网络编程是基于连接的 Socket, 在交换数据之前必须要建立好连接. Socket 之间的连接分为服务端监听, 客户端发起连接, 服务端确认三步. 建立好连接之后使用多线程技术将数据交换的工作转移到另外的线程, 以便于服务端及时确认新的客户端的请求.
+
+## 源代码
+
+点击此处访问源代码:
+
+- [服务端](https://github.com/xixixixixiao/xiao-blog/tree/master/solutions/SocketNetworkProgramming/TcpDemoServer/)
+- [客户端](https://github.com/xixixixixiao/xiao-blog/tree/master/solutions/SocketNetworkProgramming/TcpDemoClient/)
