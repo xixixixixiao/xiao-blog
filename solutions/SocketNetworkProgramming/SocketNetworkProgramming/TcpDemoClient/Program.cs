@@ -16,7 +16,11 @@ namespace TcpDemoClient
     {
         static void Main(string[] args)
         {
-            MultipleTimesSend();
+            // 使用 TCP.
+            UseTcp();
+
+            // 多次向服务端发送数据.
+            // MultipleTimesSend();
         }
 
         /// <summary>

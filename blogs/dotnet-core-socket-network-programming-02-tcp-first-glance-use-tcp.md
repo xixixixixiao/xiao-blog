@@ -1,6 +1,6 @@
-# .NET Core Socket 网络编程, 第四篇 - 面向有连接的网络编程初窥: 使用 TCP
+# .NET Core Socket 网络编程, 第二篇 - 面向连接的网络编程初窥: 使用 TCP
 
-TCP (传输控制协议) 是基于建立连接的 Socket 而进行通信. 在本篇将演示如何使用 Socket 在两个 IP 终结点之间建立连接, 并相互发送消息. 如下图所示, 展示了客户端与服务端基于连接的通信的一般过程:
+TCP (传输控制协议) 是基于连接的 Socket 而进行通信. 在本篇将演示如何使用 Socket 在两个 IP 终结点之间建立连接, 并相互发送消息. 如下图所示, 展示了客户端与服务端基于连接的通信的一般过程:
 
 ![Socket 通信步骤](./images/dotnet-core-socket-networking-programming/04-tcp-first-glance/socket-step.png)
 
@@ -163,7 +163,7 @@ static void Main(string[] args)
         string message = "来自服务端消息: hello";
         clientSocket.Send(Encoding.UTF8.GetBytes(message));
 
-        byte[] data = new byte[1024];
+        byte[] data = new byte[1024]; // 接收的数据.
         clientSocket.Receive(data);
 
         clientSocket.Shutdown(SocketShutdown.Both);
@@ -237,7 +237,7 @@ static void Main(string[] args)
             byte[] data = new byte[1024];
 
             var length = clientSocket.Receive(data);
-            var result = Encoding.UTF8.GetString(data, 0, length);
+            var result = Encoding.UTF8.GetString(data, 0, length); // 接收的数据.
 
             if (string.IsNullOrEmpty(result))
             {
@@ -287,7 +287,7 @@ static void Main(string[] args)
                 byte[] data = new byte[1024];
 
                 var length = clientSocket.Receive(data);
-                var result = Encoding.UTF8.GetString(data, 0, length);
+                var result = Encoding.UTF8.GetString(data, 0, length); // 接收的数据.
 
                 if (string.IsNullOrEmpty(result))
                 {
@@ -304,10 +304,6 @@ static void Main(string[] args)
 
 使用 Task 将收发数据的工作转移到新的线程中运行, 这样服务端的 Socket 就能及时响应客户端的连接请求了.
 
-## 如果双方的缓冲区大小不匹配
-
-## 如果双方的处理速度不一致
-
-## "粘包" 与 "丢包"
-
 ## 总结
+
+TCP 协议的网络编程是基于连接的 Socket, 在交换数据之前必须要建立好连接. Socket 之间的连接分为服务端监听, 客户端发起连接, 服务端确认三步. 建立好连接之后使用多线程技术将数据交换的工作转移到另外的线程, 以便于服务端及时确认新的客户端的请求.

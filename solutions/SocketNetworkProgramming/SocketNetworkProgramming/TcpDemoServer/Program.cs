@@ -16,7 +16,17 @@ namespace TcpDemoServer
     {
         static void Main(string[] args)
         {
-            UseTcpWithThread();
+            // 使用 TCP.
+            UseTcp();
+
+            // 使用循环反复接收客户端.
+            // UseTcpWithLoop();
+
+            // 支持客户端分批发送的数据.
+            // SupportMultipleSend();
+
+            // 使用带多线程版本的 TCP.
+            // UseTcpWithThread();
         }
 
         /// <summary>
@@ -154,14 +164,14 @@ namespace TcpDemoServer
         }
 
         /// <summary>
-        /// 2. 使用带多线程版本的 TCP.
+        /// 4. 使用带多线程版本的 TCP.
         /// </summary>
         static void UseTcpWithThread()
         {
             Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             serverSocket.Bind(new IPEndPoint(IPAddress.Loopback, 50000));
-            serverSocket.Listen(10);
+            serverSocket.Listen(2);
 
             while (true)
             {
